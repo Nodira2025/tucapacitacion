@@ -1,0 +1,426 @@
+:root {
+  --primary-blue: #0d47a1;
+  --secondary-red: #d32f2f;
+  --light-blue: #e3f2fd;
+  --dark-blue: #002171;
+  --accent-red: #ff6659;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  padding-top: 76px;
+  /* Space for fixed navbar */
+  background-color: #f8f9fa;
+}
+
+/* Navbar */
+.navbar-custom {
+  background-color: var(--primary-blue);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.navbar-custom .navbar-brand img {
+  height: 50px;
+}
+
+.navbar-custom .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  margin: 0 5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+}
+
+.navbar-custom .nav-link:hover,
+.navbar-custom .nav-link.active {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+}
+
+/* Hero Section */
+.hero-section {
+  background: linear-gradient(135deg, var(--dark-blue) 0%, #031540 100%);
+  color: white;
+  padding: 160px 0 120px 0;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-section.sub-page {
+  padding: 140px 0 80px 0;
+  text-align: center;
+}
+
+/* Decorative background glowing orbs */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(13, 71, 161, 0.6) 0%, rgba(13, 71, 161, 0) 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+  animation: floatOrb 10s infinite alternate ease-in-out;
+}
+
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  right: -10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(211, 47, 47, 0.4) 0%, rgba(211, 47, 47, 0) 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  z-index: 0;
+  animation: floatOrbReverse 12s infinite alternate ease-in-out;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(80px, 50px);
+  }
+}
+
+@keyframes floatOrbReverse {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(-60px, -80px);
+  }
+}
+
+.hero-content-wrapper {
+  position: relative;
+  z-index: 2;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-section h1 {
+  font-weight: 800;
+  font-size: 4rem;
+  line-height: 1.1;
+  margin-bottom: 24px;
+  background: linear-gradient(90deg, #ffffff, #e3f2fd);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.hero-section .lead {
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 600px;
+}
+
+.hero-section .btn-hero {
+  background: linear-gradient(45deg, var(--secondary-red), #ff5252);
+  color: white;
+  border: none;
+  padding: 16px 45px;
+  font-size: 1.25rem;
+  font-weight: 800;
+  border-radius: 50px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 25px rgba(211, 47, 47, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-section .btn-hero:hover {
+  background: linear-gradient(45deg, #ff5252, var(--secondary-red));
+  transform: translateY(-5px) scale(1.02);
+  color: white;
+  box-shadow: 0 15px 35px rgba(211, 47, 47, 0.6);
+}
+
+/* Floating Image Graphic */
+.hero-graphic {
+  position: relative;
+  z-index: 2;
+  animation: floatImage 6s ease-in-out infinite;
+}
+
+.hero-graphic img {
+  border-radius: 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+  border: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes floatImage {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(2deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+/* Stats Badges in Hero */
+.hero-stats-badge {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 15px 25px;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: absolute;
+  animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  opacity: 0;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.stat-1 {
+  bottom: -20px;
+  left: -30px;
+  animation-delay: 0.5s;
+  z-index: 3;
+}
+
+.stat-2 {
+  top: -20px;
+  right: -20px;
+  animation-delay: 0.8s;
+  z-index: 3;
+}
+
+.hero-stats-badge i {
+  font-size: 2rem;
+  color: var(--accent-red);
+}
+
+.hero-stats-badge div {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-stats-badge .stat-num {
+  font-size: 1.5rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.hero-stats-badge .stat-text {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+/* WhatsApp and Social Floating Buttons */
+.whatsapp-float,
+.facebook-float,
+.instagram-float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.whatsapp-float {
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+}
+
+.facebook-float {
+  bottom: 115px;
+  right: 40px;
+  background-color: #1877f2;
+}
+
+.instagram-float {
+  bottom: 190px;
+  right: 40px;
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.whatsapp-float:hover,
+.facebook-float:hover,
+.instagram-float:hover {
+  transform: scale(1.1);
+  color: white;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Cards */
+.course-card {
+  border: none;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  background-color: white;
+}
+
+.course-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.course-card .card-img-top {
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.course-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.course-img-wrapper {
+  overflow: hidden;
+}
+
+.course-card .card-body {
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+}
+
+.course-card .card-title {
+  color: var(--primary-blue);
+  font-weight: 800;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+
+.btn-custom-outline {
+  color: var(--primary-blue);
+  border: 2px solid var(--primary-blue);
+  font-weight: 600;
+  border-radius: 25px;
+  transition: all 0.3s;
+  padding: 10px 25px;
+}
+
+.btn-custom-outline:hover {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.btn-buy {
+  background-color: var(--secondary-red);
+  color: white;
+  border: none;
+  font-weight: bold;
+  border-radius: 25px;
+  width: 100%;
+  padding: 12px;
+  margin-top: auto;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(211, 47, 47, 0.2);
+}
+
+.btn-buy:hover {
+  background-color: var(--accent-red);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(211, 47, 47, 0.4);
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark-blue);
+  color: white;
+  padding: 60px 0 20px 0;
+}
+
+footer a {
+  color: var(--light-blue);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+/* Why Choose Us Icons */
+.feature-icon-box {
+  width: 80px;
+  height: 80px;
+  background-color: var(--light-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  transition: transform 0.3s ease;
+}
+
+.feature-icon-box i {
+  color: var(--primary-blue);
+}
+
+.col-md-4:hover .feature-icon-box {
+  transform: rotateY(180deg);
+}
+
+/* Area Headers */
+.area-header {
+  border-bottom: 3px solid var(--secondary-red);
+  display: inline-block;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
+  color: var(--primary-blue);
+  font-weight: 800;
+}

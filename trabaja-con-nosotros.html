@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trabaja con nosotros - Tu Capacitación</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="Tu Capacitación"
+                    onerror="this.onerror=null; this.src=''; this.alt='Tu Capacitación'; this.style.color='white';">
+            </a>
+            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="instituto.html">El Instituto</a></li>
+                    <li class="nav-item"><a class="nav-link" href="cursos.html">Cursos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sedes.html">Sedes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galería de fotos</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="trabaja-con-nosotros.html">Trabaja con
+                            nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section sub-page">
+        <div class="container text-center hero-content-wrapper">
+            <h1 class="display-4 fw-bold mb-3">Trabaja con Nosotros</h1>
+            <p class="lead mx-auto">Súmate a nuestro equipo de profesionales educativos.</p>
+        </div>
+    </section>
+
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card shadow-sm border-0 p-4" style="border-radius: 20px;">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4" style="color: var(--primary-blue);">Postúlate</h3>
+                        <form id="jobForm">
+                            <div class="mb-3">
+                                <label for="name" class="form-label fw-bold">Nombre completo *</label>
+                                <input type="text" class="form-control form-control-lg" id="name" required
+                                    placeholder="Tu nombre">
+                            </div>
+                            <div class="mb-3">
+                                <label for="role" class="form-label fw-bold">Puesto al que te postulas *</label>
+                                <input type="text" class="form-control form-control-lg" id="role" required
+                                    placeholder="Ej. Docente de Informática">
+                            </div>
+                            <div class="mb-4">
+                                <label for="message" class="form-label fw-bold">Breve presentación *</label>
+                                <textarea class="form-control form-control-lg" id="message" rows="5" required
+                                    placeholder="Cuéntanos un poco sobre tu experiencia..."></textarea>
+                            </div>
+                            <button type="submit"
+                                class="btn btn-buy btn-lg w-100 py-3 d-flex justify-content-center align-items-center">
+                                <i class="fab fa-whatsapp me-2 fa-lg"></i> Enviar Postulación
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- WhatsApp and Social Floating Buttons -->
+    <a href="https://wa.me/5493855140883" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.facebook.com/Tucapacitacionoficial" class="facebook-float" target="_blank"><i
+            class="fab fa-facebook-f"></i></a>
+    <a href="https://www.instagram.com/tucapacitacionoficial" class="instagram-float" target="_blank"><i
+            class="fab fa-instagram"></i></a>
+
+    <footer>
+        <div class="container text-center text-white">
+            <p>&copy; 2026 Tu Capacitación.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
