@@ -4,7 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería de Fotos - Tu Capacitación</title>
+    <title>Galería de Fotos | Experiencias en Tu Capacitación Santiago</title>
+    <meta name="description"
+        content="Mirá nuestra galería de fotos: alumnos en clase, talleres prácticos y entregas de diplomas. Viví la experiencia de capacitarte con nosotros.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Galería de Fotos | Tu Capacitación Santiago">
+    <meta property="og:description"
+        content="Conocé nuestro instituto a través de imágenes de nuestras clases y eventos.">
+    <meta property="og:image" content="https://www.tucapacitacion.com/img/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,10 +22,20 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
+            <!-- Mobile Search Icon (Left) -->
+            <div class="mobile-search-btn d-lg-none">
+                <a href="cursos.html" class="text-white text-decoration-none">
+                    <i class="fas fa-search fa-lg"></i>
+                </a>
+            </div>
+
+            <!-- Logo (Center) -->
             <a class="navbar-brand" href="index.html">
                 <img src="img/logo.png" alt="Tu Capacitación"
                     onerror="this.onerror=null; this.src=''; this.alt='Tu Capacitación'; this.style.color='white';">
             </a>
+
+            <!-- Toggle Button (Right) -->
             <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav">
                 <i class="fas fa-bars fa-lg"></i>
@@ -32,6 +50,15 @@
                     <li class="nav-item"><a class="nav-link" href="trabaja-con-nosotros.html">Trabaja con nosotros</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item d-none d-lg-flex ms-lg-3 align-items-center">
+                        <form class="navbar-search" action="cursos.html" method="GET">
+                            <input class="form-control form-control-sm shadow-none" type="search"
+                                placeholder="Buscar curso..." aria-label="Buscar" name="q">
+                            <button class="btn btn-sm shadow-none" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -39,47 +66,111 @@
 
     <section class="hero-section sub-page">
         <div class="container text-center hero-content-wrapper">
-            <h1 class="display-4 fw-bold mb-3">Galería de Fotos</h1>
-            <p class="lead mx-auto">Conoce nuestras instalaciones y a nuestros alumnos en acción.</p>
+            <h1 class="display-4 fw-bold mb-3">Tu Capacitación en Imágenes</h1>
+            <p class="lead mx-auto">Explorá nuestra galería y conocé cómo es estudiar en nuestro instituto.</p>
         </div>
     </section>
 
     <div class="container py-5">
-        <div class="row g-4">
-            <!-- Placeholders for gallery -->
-            <div class="col-md-4">
-                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    class="img-fluid rounded shadow-sm" alt="Aula">
-            </div>
-            <div class="col-md-4">
-                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    class="img-fluid rounded shadow-sm" alt="Estudiantes">
-            </div>
-            <div class="col-md-4">
-                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    class="img-fluid rounded shadow-sm" alt="Práctica">
-            </div>
-            <div class="col-md-4">
-                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    class="img-fluid rounded shadow-sm" alt="Clase">
-            </div>
-            <div class="col-md-4">
-                <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    class="img-fluid rounded shadow-sm" alt="Salud">
-            </div>
-            <div class="col-md-4">
-                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                    class="img-fluid rounded shadow-sm" alt="Belleza">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div id="galleryCarousel" class="carousel slide shadow-lg rounded-4 overflow-hidden"
+                    data-bs-ride="carousel">
+                    <!-- Indicators -->
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="0" class="active"
+                            aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                        <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="3"
+                            aria-label="Slide 4"></button>
+                        <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="4"
+                            aria-label="Slide 5"></button>
+                        <button type="button" data-bs-target="#galleryCarousel" data-bs-slide-to="5"
+                            aria-label="Slide 6"></button>
+                    </div>
+
+                    <!-- Carousel Items -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" data-bs-interval="2000">
+                            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                                class="d-block w-100 gallery-carousel-img" alt="Aula">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="fw-bold">Nuestras Aulas</h5>
+                                <p>Espacios cómodos y equipados para el aprendizaje.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                                class="d-block w-100 gallery-carousel-img" alt="Estudiantes">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="fw-bold">Compañerismo</h5>
+                                <p>Un ambiente ideal para crecer profesionalmente.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                                class="d-block w-100 gallery-carousel-img" alt="Práctica">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="fw-bold">Prácticas Reales</h5>
+                                <p>Aprendizaje basado en la experiencia directa.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                                class="d-block w-100 gallery-carousel-img" alt="Clase">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="fw-bold">Docentes Expertos</h5>
+                                <p>Capacitación de la mano de profesionales del sector.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                                class="d-block w-100 gallery-carousel-img" alt="Salud">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="fw-bold">Área Salud</h5>
+                                <p>Equipamiento moderno para prácticas de enfermería y auxiliares.</p>
+                            </div>
+                        </div>
+                        <div class="carousel-item" data-bs-interval="2000">
+                            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                                class="d-block w-100 gallery-carousel-img" alt="Belleza">
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5 class="fw-bold">Área Belleza</h5>
+                                <p>Talleres de peluquería, manicuría y estética.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#galleryCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#galleryCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Siguiente</span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- WhatsApp Floating Rate -->
-    <a href="https://wa.me/5493855140883" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <a href="https://www.facebook.com/Tucapacitacionoficial" class="facebook-float" target="_blank"><i
+    <!-- Social Floating Buttons -->
+    <a href="https://wa.me/5493855140883" class="social-float whatsapp-float" target="_blank"><i
+            class="fab fa-whatsapp"></i></a>
+    <a href="https://www.facebook.com/Tucapacitacionoficial" class="social-float facebook-float" target="_blank"><i
             class="fab fa-facebook-f"></i></a>
-    <a href="https://www.instagram.com/tucapacitacionoficial" class="instagram-float" target="_blank"><i
+    <a href="https://www.instagram.com/tucapacitacionoficial" class="social-float instagram-float" target="_blank"><i
             class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@tucapacitacion" class="social-float tiktok-float" target="_blank"><i
+            class="fab fa-tiktok"></i></a>
+    <a href="https://www.youtube.com/@tucapacitacion" class="social-float youtube-float" target="_blank"><i
+            class="fab fa-youtube"></i></a>
 
     <footer>
         <div class="container text-center text-white">

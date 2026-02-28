@@ -4,21 +4,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El Instituto - Tu Capacitación</title>
+    <title>Sobre Nosotros | Tu Capacitación - Santiago del Estero</title>
+    <meta name="description"
+        content="Conocé nuestra historia y misión. Tu Capacitación es el centro líder en formación laboral de Santiago del Estero, brindando herramientas reales para tu futuro.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Sobre Nosotros | Tu Capacitación - Santiago del Estero">
+    <meta property="og:description"
+        content="Conocé por qué somos la mejor opción para tu formación profesional en Santiago del Estero.">
+    <meta property="og:image" content="https://www.tucapacitacion.com/img/logo.png">
+
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
+            <!-- Mobile Search Icon (Left) -->
+            <div class="mobile-search-btn d-lg-none">
+                <a href="cursos.html" class="text-white text-decoration-none">
+                    <i class="fas fa-search fa-lg"></i>
+                </a>
+            </div>
+
+            <!-- Logo (Center) -->
             <a class="navbar-brand" href="index.html">
                 <img src="img/logo.png" alt="Tu Capacitación"
                     onerror="this.onerror=null; this.src=''; this.alt='Tu Capacitación'; this.style.color='white';">
             </a>
-            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse"
+
+            <!-- Toggle Button (Right) -->
+            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav">
                 <i class="fas fa-bars fa-lg"></i>
             </button>
@@ -32,6 +55,15 @@
                     <li class="nav-item"><a class="nav-link" href="trabaja-con-nosotros.html">Trabaja con nosotros</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item d-none d-lg-flex ms-lg-3 align-items-center">
+                        <form class="navbar-search" action="cursos.html" method="GET">
+                            <input class="form-control form-control-sm shadow-none" type="search"
+                                placeholder="Buscar curso..." aria-label="Buscar" name="q">
+                            <button class="btn btn-sm shadow-none" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -39,8 +71,8 @@
 
     <section class="hero-section sub-page">
         <div class="container text-center hero-content-wrapper">
-            <h1 class="display-4 fw-bold mb-3">Sobre Nosotros</h1>
-            <p class="lead mx-auto">Formando profesionales, abriendo puertas al futuro.</p>
+            <h1 class="display-4 fw-bold mb-3">Tu Centro de Capacitación Profesional</h1>
+            <p class="lead mx-auto">Mas de 10 años formando profesionales en Santiago del Estero.</p>
         </div>
     </section>
 
@@ -65,14 +97,109 @@
         </div>
     </div>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/5493855140883" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <!-- Facebook Floating Button -->
-    <a href="https://www.facebook.com/Tucapacitacionoficial" class="facebook-float" target="_blank"><i
+    <!-- Modalidades Section -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold display-5">Modalidades disponibles</h2>
+                <div class="mx-auto mt-2" style="width: 60px; height: 3px; background-color: var(--secondary-red);">
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Presencial -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm modal-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="modal-icon-wrapper me-3">
+                                    <img src="img/modalidad_presencial.png" alt="Presencial" class="img-fluid">
+                                </div>
+                                <h4 class="fw-bold mb-0">PRESENCIAL</h4>
+                            </div>
+                            <ul class="list-unstyled modal-list">
+                                <li><i class="fas fa-check text-success me-2"></i>Asistirás a clases presenciales una
+                                    vez por semana (Cupos reducidos. Consultar Sedes disponibles por curso)</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Podrás realizar tus consultas al
+                                    docente a través del grupo de Whatsapp.</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Dispondrás del material de estudio en
+                                    nuestra Plataforma virtual.</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Contarás además con nuestro soporte
+                                    presencial y en línea para cualquier duda e inconveniente que tengas durante el
+                                    cursado.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Semipresencial -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm modal-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="modal-icon-wrapper me-3">
+                                    <img src="img/modalidad_semipresencial.png" alt="Semipresencial" class="img-fluid">
+                                </div>
+                                <h4 class="fw-bold mb-0">SEMIPRESENCIAL</h4>
+                            </div>
+                            <ul class="list-unstyled modal-list">
+                                <li><i class="fas fa-check text-success me-2"></i>Vas a interactuar en línea con el
+                                    docente mediante clases por Zoom una vez por semana.</li>
+                                <li><i class="fas fa-check text-success me-2"></i>En caso de que no puedas asistir las
+                                    clases quedan grabadas, para que luego la visualices.</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Podrás realizar tus consultas al
+                                    docente a través del grupo de Whatsapp.</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Dispondrás del material de estudio en
+                                    nuestra Plataforma virtual.</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Contarás además con nuestro soporte
+                                    presencial y en línea para cualquier duda e inconveniente que tengas durante el
+                                    cursado.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Distancia -->
+                <div class="col-md-4">
+                    <div class="card h-100 border-0 shadow-sm modal-card">
+                        <div class="card-body p-4">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="modal-icon-wrapper me-3">
+                                    <img src="img/modalidad_distancia.png" alt="Distancia" class="img-fluid">
+                                </div>
+                                <h4 class="fw-bold mb-0">DISTANCIA</h4>
+                            </div>
+                            <ul class="list-unstyled modal-list">
+                                <li><i class="fas fa-check text-success me-2"></i>Dispondrás del material de estudio en
+                                    la Plataforma virtual las 24 horas.</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Cursa a tu ritmo.</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Tendrás a disposición por cada unidad
+                                    tus trabajos prácticos en Flexy Quiz.</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Un evaluativo por módulo.</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Podrás realizar tus consultas al
+                                    docente in box por plataforma.</li>
+                                <li><i class="fas fa-check text-success me-2"></i>Contarás además con nuestro soporte
+                                    presencial en línea para asistencia administrativa y cualquier duda que te surja
+                                    durante el cursado.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Floating Buttons -->
+    <a href="https://wa.me/5493855140883" class="social-float whatsapp-float" target="_blank"><i
+            class="fab fa-whatsapp"></i></a>
+    <a href="https://www.facebook.com/Tucapacitacionoficial" class="social-float facebook-float" target="_blank"><i
             class="fab fa-facebook-f"></i></a>
-    <!-- Instagram Floating Button -->
-    <a href="https://www.instagram.com/tucapacitacionoficial" class="instagram-float" target="_blank"><i
+    <a href="https://www.instagram.com/tucapacitacionoficial" class="social-float instagram-float" target="_blank"><i
             class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@tucapacitacion" class="social-float tiktok-float" target="_blank"><i
+            class="fab fa-tiktok"></i></a>
+    <a href="https://www.youtube.com/@tucapacitacion" class="social-float youtube-float" target="_blank"><i
+            class="fab fa-youtube"></i></a>
 
     <footer>
         <div class="container text-center text-white">

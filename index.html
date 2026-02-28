@@ -4,9 +4,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tu Capacitación - Formación con Salida Laboral</title>
+    <title>Tu Capacitación | Cursos con Salida Laboral en Santiago del Estero</title>
     <meta name="description"
-        content="Capacitate en Tu Capacitación en las áreas de Salud, Técnica, Belleza, Contable, e Informática. Formación laboral con alta demanda.">
+        content="¡Capacitate hoy! Cursos de rápida salida laboral en Santiago del Estero. Especializaciones en Salud, Técnica, Belleza e Informática con formación práctica y profesional.">
+    <meta name="keywords"
+        content="cursos santiago del estero, salida laboral rapida, capacitacion profesional, instituto santiago del estero, cursos de salud, cursos de belleza">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.tucapacitacion.com/">
+    <meta property="og:title" content="Tu Capacitación | Cursos con Salida Laboral en Santiago del Estero">
+    <meta property="og:description"
+        content="Formación profesional con alta demanda laboral. Encontrá tu curso ideal en Santiago del Estero.">
+    <meta property="og:image" content="https://www.tucapacitacion.com/img/logo.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.tucapacitacion.com/">
+    <meta property="twitter:title" content="Tu Capacitación | Cursos con Salida Laboral en Santiago del Estero">
+    <meta property="twitter:description"
+        content="Formación profesional con alta demanda laboral. Encontrá tu curso ideal en Santiago del Estero.">
+    <meta property="twitter:image" content="https://www.tucapacitacion.com/img/logo.png">
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Tu Capacitación",
+      "image": "https://www.tucapacitacion.com/img/logo.png",
+      "url": "https://www.tucapacitacion.com",
+      "telephone": "+5493855140883",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "25 de Mayo 54",
+        "addressLocality": "Santiago del Estero",
+        "addressRegion": "Santiago del Estero",
+        "postalCode": "G4200",
+        "addressCountry": "AR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -27.790934,
+        "longitude": -64.2588147
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00",
+        "closes": "21:00"
+      }
+    }
+    </script>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Google Fonts -->
@@ -22,12 +72,21 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
+            <!-- Mobile Search Icon (Left) -->
+            <div class="mobile-search-btn d-lg-none">
+                <a href="cursos.html" class="text-white text-decoration-none">
+                    <i class="fas fa-search fa-lg"></i>
+                </a>
+            </div>
+
+            <!-- Logo (Center) -->
             <a class="navbar-brand" href="index.html">
-                <!-- Using the provided logo -->
                 <img src="img/logo.png" alt="Tu Capacitación"
                     onerror="this.onerror=null; this.src=''; this.alt='Tu Capacitación'; this.style.color='white'; this.style.fontWeight='800'; this.style.fontSize='22px';">
             </a>
-            <button class="navbar-toggler pr-0 border-0 text-white" type="button" data-bs-toggle="collapse"
+
+            <!-- Toggle Button (Right) -->
+            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <i class="fas fa-bars fa-lg"></i>
@@ -55,6 +114,15 @@
                     <li class="nav-item">
                         <a class="nav-link" href="contacto.html">Contacto</a>
                     </li>
+                    <li class="nav-item d-none d-lg-flex ms-lg-3 align-items-center">
+                        <form class="navbar-search" action="cursos.html" method="GET">
+                            <input class="form-control form-control-sm shadow-none" type="search"
+                                placeholder="Buscar curso..." aria-label="Buscar" name="q">
+                            <button class="btn btn-sm shadow-none" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -71,13 +139,17 @@
                     <br>
                     <span class="badge bg-danger rounded-pill px-3 py-2 mb-3 shadow-sm" style="font-size: 0.9rem;"><i
                             class="fas fa-bolt me-1"></i> Inscripciones Abiertas 2026</span>
-                    <h1 class="display-3">Capacitate para el futuro laboral de hoy.</h1>
-                    <p class="lead mb-5 mx-auto mx-lg-0" style="font-size: 1.25rem;">Nuestra especialidad es la
-                        formación en los puestos que las empresas necesitan actualmente. Elige tu sector y comienza a
-                        trabajar en lo que te gusta.</p>
-                    <a href="cursos.html" class="btn btn-hero">
-                        Explorar Cursos <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <h1 class="display-3">Cursos con Salida Laboral en Santiago del Estero.</h1>
+                    <p class="lead mb-5 mx-auto mx-lg-0" style="font-size: 1.25rem;">Capacitate hoy en los oficios con
+                        mayor demanda. Formación práctica y profesional en Salud, Técnica y Belleza con validez
+                        nacional.</p>
+                    <div class="col-12 text-center mt-5 mb-3">
+                        <a href="cursos.html"
+                            class="btn btn-outline-light btn-custom-outline btn-lg px-5 py-3 text-white fw-bold shadow-sm"
+                            style="border-radius: 30px;">
+                            Ver Todas las Áreas <i class="fas fa-arrow-right ms-2"></i>
+                        </a>
+                    </div>
                 </div>
                 <!-- Animated Graphic Content -->
                 <div class="col-lg-5 offset-lg-1 d-none d-md-block">
@@ -207,7 +279,7 @@
                 </div>
             </div>
             <div class="text-center mt-5">
-                <a href="cursos.html" class="btn btn-hero"
+                <a href="cursos.html" class="btn btn-hero text-white"
                     style="background-color: var(--primary-blue); box-shadow: 0 5px 15px rgba(13, 71, 161, 0.4);">Ver
                     Todas las Áreas</a>
             </div>
@@ -234,7 +306,7 @@
                 </div>
                 <div class="col-md-4 mb-4">
                     <h5 class="fw-bold mb-3">Contáctanos</h5>
-                    <p class="mb-2"><i class="fas fa-whatsapp me-2" style="color: #25d366;"></i> <a
+                    <p class="mb-2"><i class="fab fa-whatsapp me-2" style="color: #25d366;"></i> <a
                             href="https://wa.me/5493855140883" target="_blank"
                             class="text-white text-decoration-none">+54 9 385 514-0883</a></p>
                     <p><i class="fas fa-envelope me-2" style="color: var(--secondary-red);"></i>
@@ -247,14 +319,17 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/5493855140883" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
-    <!-- Facebook Floating Button -->
-    <a href="https://www.facebook.com/Tucapacitacionoficial" class="facebook-float" target="_blank"><i
+    <!-- Social Floating Buttons -->
+    <a href="https://wa.me/5493855140883" class="social-float whatsapp-float" target="_blank"><i
+            class="fab fa-whatsapp"></i></a>
+    <a href="https://www.facebook.com/Tucapacitacionoficial" class="social-float facebook-float" target="_blank"><i
             class="fab fa-facebook-f"></i></a>
-    <!-- Instagram Floating Button -->
-    <a href="https://www.instagram.com/tucapacitacionoficial" class="instagram-float" target="_blank"><i
+    <a href="https://www.instagram.com/tucapacitacionoficial" class="social-float instagram-float" target="_blank"><i
             class="fab fa-instagram"></i></a>
+    <a href="https://www.tiktok.com/@tucapacitacion" class="social-float tiktok-float" target="_blank"><i
+            class="fab fa-tiktok"></i></a>
+    <a href="https://www.youtube.com/@tucapacitacion" class="social-float youtube-float" target="_blank"><i
+            class="fab fa-youtube"></i></a>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

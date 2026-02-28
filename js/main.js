@@ -62,4 +62,23 @@ document.addEventListener('DOMContentLoaded', () => {
             window.open(getWhatsAppLink(waMessage), '_blank');
         });
     }
+
+    // Navbar search auto-focus handling
+    const urlParams = new URLSearchParams(window.location.search);
+    const q = urlParams.get('q');
+    if (q) {
+        const searchInput = document.getElementById('searchInput');
+        if (searchInput) {
+            // Scroll to search or course list
+            document.getElementById('searchInput').scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Allow time for navigation and page setup
+            setTimeout(() => {
+                searchInput.value = q;
+                // Dispatch input event to trigger autocomplete formatting
+                searchInput.dispatchEvent(new Event('input', { bubbles: true }));
+                searchInput.focus();
+            }, 500);
+        }
+    }
 });
