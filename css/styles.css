@@ -47,6 +47,8 @@ body {
     justify-content: space-between;
     align-items: center;
     position: relative;
+    min-height: 70px;
+    /* Added to match body padding-top and fix white gap */
   }
 
   .navbar-custom .navbar-brand {
