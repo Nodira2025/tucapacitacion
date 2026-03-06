@@ -17,6 +17,15 @@ body {
 .navbar-custom {
   background-color: var(--primary-blue);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: all 0.4s ease;
+}
+
+.navbar-scrolled {
+  background-color: rgba(13, 71, 161, 0.95) !important;
+  backdrop-filter: blur(10px);
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-custom .navbar-brand img {
@@ -310,57 +319,117 @@ body {
   opacity: 0.8;
 }
 
-/* WhatsApp and Social Floating Buttons */
-.social-float {
+/* Social Floating Container */
+.social-float-container {
   position: fixed;
+  bottom: 115px;
+  right: 40px;
+  z-index: 1050;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Toggle Main Button */
+.social-float-main {
   width: 60px;
   height: 60px;
-  color: #FFF;
-  border-radius: 50px;
-  text-align: center;
+  background-color: var(--primary-blue);
+  color: white;
+  border-radius: 50%;
+  border: none;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1052;
+}
+
+.social-float-main:hover {
+  transform: scale(1.1);
+  background-color: var(--dark-blue);
+}
+
+/* Independent WhatsApp (Always Visible & Separated) */
+.social-float-wa {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  width: 60px;
+  height: 60px;
+  background-color: #25d366;
+  color: white;
+  border-radius: 50%;
   font-size: 30px;
-  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
+  z-index: 1052;
 }
 
-.social-float:hover {
+.social-float-wa:hover {
   transform: scale(1.1);
   color: white;
-  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.4);
 }
 
-.whatsapp-float {
-  bottom: 40px;
-  right: 40px;
-  background-color: #25d366;
+/* Secondary Links Group */
+.social-float-links {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 15px;
+  position: absolute;
+  bottom: 75px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1051;
 }
 
-.facebook-float {
-  bottom: 115px;
-  right: 40px;
+.social-float-container.active .social-float-links {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Items */
+.social-float-item {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: white;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.social-float-item:hover {
+  transform: scale(1.1);
+  color: white;
+}
+
+.social-float-item.facebook {
   background-color: #1877f2;
 }
 
-.instagram-float {
-  bottom: 190px;
-  right: 40px;
+.social-float-item.instagram {
   background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
 }
 
-.tiktok-float {
-  bottom: 265px;
-  right: 40px;
+.social-float-item.tiktok {
   background-color: #000;
 }
 
-.youtube-float {
-  bottom: 340px;
-  right: 40px;
+.social-float-item.youtube {
   background-color: #FF0000;
 }
 
@@ -668,4 +737,78 @@ footer a:hover {
 
 .modal-list li i {
   margin-top: 4px;
+}
+
+/* --- NEW ENHANCEMENTS --- */
+
+/* Course Cards Hover */
+.course-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+.course-img-wrapper {
+  overflow: hidden;
+}
+
+.course-img-wrapper img {
+  transition: transform 0.5s ease;
+}
+
+.course-card:hover .course-img-wrapper img {
+  transform: scale(1.08);
+  /* Zoom in on card hover */
+}
+
+/* Testimonial Cards */
+.testimonial-card {
+  background: white;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+  height: 100%;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--light-blue);
+}
+
+/* FAQ Accordions */
+.faq-accordion .accordion-item {
+  border: none;
+  border-bottom: 1px solid #e9ecef;
+  margin-bottom: 15px;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  overflow: hidden;
+}
+
+.faq-accordion .accordion-button {
+  font-weight: 600;
+  color: var(--primary-blue);
+  background-color: white;
+  padding: 1.25rem 1.5rem;
+}
+
+.faq-accordion .accordion-button:not(.collapsed) {
+  background-color: var(--light-blue);
+  color: var(--dark-blue);
+  box-shadow: none;
+}
+
+.faq-accordion .accordion-button:focus {
+  box-shadow: none;
 }
