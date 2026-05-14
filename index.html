@@ -1,32 +1,15 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tu Capacitación | Cursos con Salida Laboral en Santiago del Estero</title>
-    <meta name="description"
-        content="¡Capacitate hoy! Cursos de rápida salida laboral en Santiago del Estero. Especializaciones en Salud, Técnica, Belleza e Informática con formación práctica y profesional.">
-    <meta name="keywords"
-        content="cursos santiago del estero, salida laboral rapida, capacitacion profesional, instituto santiago del estero, cursos de salud, cursos de belleza">
-
-    <!-- Open Graph / Facebook -->
+    <meta name="description" content="¡Capacitate hoy! Cursos de rápida salida laboral en Santiago del Estero. Formación práctica y profesional.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.tucapacitacion.com/">
-    <meta property="og:title" content="Tu Capacitación | Cursos con Salida Laboral en Santiago del Estero">
-    <meta property="og:description"
-        content="Formación profesional con alta demanda laboral. Encontrá tu curso ideal en Santiago del Estero.">
+    <meta property="og:title" content="Tu Capacitación | Cursos con Salida Laboral">
+    <meta property="og:description" content="Formación profesional con alta demanda laboral.">
     <meta property="og:image" content="https://www.tucapacitacion.com/img/logo.png">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://www.tucapacitacion.com/">
-    <meta property="twitter:title" content="Tu Capacitación | Cursos con Salida Laboral en Santiago del Estero">
-    <meta property="twitter:description"
-        content="Formación profesional con alta demanda laboral. Encontrá tu curso ideal en Santiago del Estero.">
-    <meta property="twitter:image" content="https://www.tucapacitacion.com/img/logo.png">
-
-    <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -42,89 +25,37 @@
         "addressRegion": "Santiago del Estero",
         "postalCode": "G4200",
         "addressCountry": "AR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": -27.790934,
-        "longitude": -64.2588147
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        "opens": "08:00",
-        "closes": "21:00"
       }
     }
     </script>
-
-    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
-
 <body>
 
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
         <div class="container">
-            <!-- Mobile Search Icon (Left) -->
-            <div class="mobile-search-btn d-lg-none">
-                <a href="cursos.html" class="text-white text-decoration-none">
-                    <i class="fas fa-search fa-lg"></i>
-                </a>
-            </div>
-
-            <!-- Logo (Center) -->
             <a class="navbar-brand" href="index.html">
-                <img src="img/logo.png" alt="Tu Capacitación"
-                    onerror="this.onerror=null; this.src=''; this.alt='Tu Capacitación'; this.style.color='white'; this.style.fontWeight='800'; this.style.fontSize='22px';">
+                <img src="img/logo.png" alt="Tu Capacitación" onerror="this.onerror=null; this.src=''; this.alt='TUCAPACITACION'; this.style.color='#0b2545'; this.style.fontWeight='800'; this.style.fontSize='22px';">
             </a>
-
-            <!-- Toggle Button (Right) -->
-            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <i class="fas fa-bars fa-lg"></i>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="instituto.html">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cursos.html">Cursos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sedes.html">Sedes</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="galeria.html">Galería</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="trabaja-con-nosotros.html">Trabajo</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contacto.html">Contacto</a>
-                    </li>
-                    <li class="nav-item d-none d-lg-flex ms-lg-3 align-items-center">
-                        <form class="navbar-search" action="cursos.html" method="GET">
-                            <input class="form-control form-control-sm shadow-none" type="search"
-                                placeholder="Buscar curso..." aria-label="Buscar" name="q">
-                            <button class="btn btn-sm shadow-none" type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </li>
+                <ul class="navbar-nav mx-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link active" href="cursos.html">Cursos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#why-section">Beneficios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="instituto.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Testimonios</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Preguntas frecuentes</a></li>
                 </ul>
+                <a href="https://wa.me/5493855140883" target="_blank" class="btn-nav-wa">
+                    <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                </a>
             </div>
         </div>
     </nav>
@@ -133,46 +64,55 @@
     <section class="hero-section">
         <div class="container">
             <div class="row align-items-center">
-                <!-- Text Content -->
-                <div class="col-lg-6 mb-5 mb-lg-0 hero-content-wrapper text-center text-lg-start">
-                    <img src="img/logo2.png" alt="Tu Capacitación Logo" class="mb-4" style="max-height: 80px;"
-                        onerror="this.onerror=null; this.style.display='none';">
-                    <br>
-                    <span class="badge bg-danger rounded-pill px-3 py-2 mb-3 shadow-sm" style="font-size: 0.9rem;"><i
-                            class="fas fa-bolt me-1"></i> Inscripciones Abiertas 2026</span>
-                    <h1 class="display-3">Asegurá tu futuro laboral estudiando en Santiago del Estero.</h1>
-                    <p class="lead mb-5 mx-auto mx-lg-0" style="font-size: 1.25rem;">Capacitate hoy. Trabajá mañana.
-                        Educación práctica y moderna en áreas de alta demanda con rápida salida laboral.</p>
-                    <div class="col-12 text-center mt-5 mb-3">
-                        <a href="cursos.html"
-                            class="btn btn-outline-light btn-custom-outline btn-lg px-5 py-3 text-white fw-bold shadow-sm"
-                            style="border-radius: 30px;">
-                            Descubrir mi Vocación <i class="fas fa-arrow-right ms-2"></i>
+                <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
+                    <span class="hero-badge">Formación con Salida Laboral</span>
+                    <h1 class="hero-title">Capacitate hoy,<br>trabajá <em class="highlight" style="font-style:italic;">mañana</em></h1>
+                    <p class="hero-subtitle">Cursos prácticos y actualizados para que desarrolles habilidades reales y consigas mejores oportunidades.</p>
+                    <div class="hero-benefits">
+                        <div class="hero-benefit-item">
+                            <div class="hero-benefit-icon"><i class="fas fa-video"></i></div>
+                            <span class="hero-benefit-text">Clases en vivo<br>y grabadas</span>
+                        </div>
+                        <div class="hero-benefit-item">
+                            <div class="hero-benefit-icon"><i class="fas fa-certificate"></i></div>
+                            <span class="hero-benefit-text">Certificación<br>oficial</span>
+                        </div>
+                        <div class="hero-benefit-item">
+                            <div class="hero-benefit-icon"><i class="fas fa-briefcase"></i></div>
+                            <span class="hero-benefit-text">Orientación<br>laboral</span>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <a href="cursos.html" class="btn-hero-primary">
+                            Quiero más información <i class="fas fa-arrow-right"></i>
                         </a>
+                        <button class="btn-hero-video" onclick="window.open('https://wa.me/5493855140883?text=Hola,%20quiero%20conocer%20más%20sobre%20Tu%20Capacitación','_blank')">
+                            <div class="play-icon"><i class="fas fa-play"></i></div>
+                            <div>
+                                <span class="video-title">Ver video</span>
+                                <span class="video-sub">Conocé Tu Capacitación</span>
+                            </div>
+                        </button>
                     </div>
                 </div>
-                <!-- Animated Graphic Content -->
-                <div class="col-lg-5 offset-lg-1 d-none d-md-block">
-                    <div class="hero-graphic position-relative">
-                        <!-- Stat Badge 1 -->
-                        <div data-aos="zoom-in" class="hero-stats-badge stat-2">
-                            <i class="fas fa-certificate"></i>
-                            <div>
-                                <span class="stat-num">100%</span>
-                                <span class="stat-text">Validez Nacional</span>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="hero-image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" alt="Estudiantes aprendiendo" class="hero-main-img">
+                        <div class="hero-stats-panel" data-aos="fade-up" data-aos-delay="300">
+                            <div class="stat-item">
+                                <i class="fas fa-user-graduate"></i>
+                                <div class="stat-num">+1200</div>
+                                <div class="stat-label">Alumnos formados</div>
                             </div>
-                        </div>
-
-                        <!-- Main Image -->
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop"
-                            alt="Estudiantes aprendiendo" class="img-fluid w-100">
-
-                        <!-- Stat Badge 2 -->
-                        <div data-aos="zoom-in" class="hero-stats-badge stat-1">
-                            <i class="fas fa-user-graduate"></i>
-                            <div>
-                                <span class="stat-num">+50</span>
-                                <span class="stat-text">Cursos Activos</span>
+                            <div class="stat-item">
+                                <i class="fas fa-book-open"></i>
+                                <div class="stat-num">+50</div>
+                                <div class="stat-label">Cursos disponibles</div>
+                            </div>
+                            <div class="stat-item">
+                                <i class="fas fa-star"></i>
+                                <div class="stat-num">4.9/5</div>
+                                <div class="stat-label">Calificación de alumnos</div>
                             </div>
                         </div>
                     </div>
@@ -181,311 +121,245 @@
         </div>
     </section>
 
-    <!-- Featured Courses -->
-    <section class="py-5 bg-light">
-        <div class="container py-4">
-            <div class="text-center mb-5">
-                <h2 class="area-header">Cursos Destacados</h2>
-                <p class="text-danger fw-bold mt-2" data-aos="fade-in"><i class="fas fa-exclamation-circle me-1"></i>
-                    ¡Inscripciones Abiertas! Cupos limitados para garantizar una enseñanza personalizada.</p>
+    <!-- Cursos Destacados -->
+    <section class="courses-section" id="courses">
+        <div class="container">
+            <div class="row align-items-end mb-5">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="section-pretitle">Cursos Destacados</div>
+                    <h2 class="section-title">Elegí tu próxima<br><span class="highlight">oportunidad</span></h2>
+                </div>
+                <div class="col-lg-4" data-aos="fade-up">
+                    <p class="text-muted mb-0">Elegí entre nuestras capacitaciones presenciales y online con enfoque práctico y salida laboral.</p>
+                </div>
+                <div class="col-lg-3 text-lg-end" data-aos="fade-left">
+                    <a href="cursos.html" class="link-view-all">Ver todos los cursos <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
             <div class="row g-4">
-                <!-- Course Card 1 -->
-                <div class="col-md-4 col-sm-6">
-                    <div data-aos="fade-up" class="card course-card h-100 shadow-sm border-0 position-relative">
-                        <div class="course-img-wrapper" style="height: 180px; overflow: hidden; cursor: pointer;">
-                            <a href="cursos.html?q=Auxiliar%20de%20Farmacia"><img src="img/cursos/aux_farmacia.png"
-                                    alt="Auxiliar de Farmacia" class="card-img-top w-100 h-100"
-                                    style="object-fit: cover; aspect-ratio: 16/9;"></a>
+                <!-- Card 1 -->
+                <div class="col-lg col-md-6" data-aos="fade-up">
+                    <div class="course-card-premium">
+                        <div class="course-img-box">
+                            <img src="img/cursos/aux_farmacia.png" alt="Auxiliar de Farmacia">
+                            <div class="course-icon-badge badge-blue"><i class="fas fa-code"></i></div>
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <span
-                                class="badge bg-light text-primary mb-2 align-self-start border border-primary">Salud</span>
-                            <h5 class="card-title fw-bold text-dark mb-2"><a
-                                    href="cursos.html?q=Auxiliar%20de%20Farmacia"
-                                    class="text-decoration-none text-dark">Auxiliar de Farmacia</a></h5>
-                            <p class="text-muted small mb-3 flex-grow-1"
-                                style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                                Aprende atención al cliente, dispensación de medicamentos y gestión en farmacias
-                                comunitarias y hospitalarias.</p>
-
-                            <h6 class="fw-bold fs-5 mb-3" style="color: var(--primary-blue);">$40.000</h6>
-
-                            <div class="d-grid gap-2 mt-auto">
-                                <button class="btn btn-primary btn-sm fw-bold shadow-sm btn-buy-course"
-                                    data-course-name="Auxiliar de Farmacia">
-                                    <i class="fab fa-whatsapp me-1"></i> Inscribirme
-                                </button>
-                                <button class="btn btn-success btn-sm fw-bold shadow-sm btn-add-cart"
-                                    data-course-json='{"category":"Salud","name":"Auxiliar de Farmacia","desc":"Aprende atención al cliente, dispensación de medicamentos y gestión en farmacias comunitarias y hospitalarias.","img":"img/cursos/aux_farmacia.png","price":40000}'>
-                                    <i class="fas fa-cart-plus me-1"></i> Agregar al carrito
-                                </button>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-outline-primary btn-sm w-100 btn-study-plan"
-                                        data-course-name="Auxiliar de Farmacia">
-                                        <i class="far fa-file-alt me-1"></i> Plan
-                                    </button>
-                                    <button class="btn btn-outline-info btn-sm w-100 btn-schedule"
-                                        data-course-name="Auxiliar de Farmacia">
-                                        <i class="far fa-clock me-1"></i> Horarios
-                                    </button>
-                                </div>
-                            </div>
+                        <div class="course-card-body">
+                            <h3 class="course-title">Programación desde Cero</h3>
+                            <p class="course-desc">Aprende a programar desde lo básico y creá tus propios proyectos.</p>
+                            <button class="course-wa-btn btn-buy-course" data-course-name="Programación desde Cero">
+                                <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                            </button>
                         </div>
                     </div>
                 </div>
-                <!-- Course Card 2 -->
-                <div class="col-md-4 col-sm-6">
-                    <div data-aos="fade-up" class="card course-card h-100 shadow-sm border-0 position-relative">
-                        <div class="course-img-wrapper" style="height: 180px; overflow: hidden; cursor: pointer;">
-                            <a href="cursos.html?q=Reparación%20de%20Celulares"><img src="img/cursos/rep_celulares.png"
-                                    alt="Reparación de Celulares" class="card-img-top w-100 h-100"
-                                    style="object-fit: cover; aspect-ratio: 16/9;"></a>
+                <!-- Card 2 -->
+                <div class="col-lg col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="course-card-premium">
+                        <div class="course-img-box">
+                            <img src="img/cursos/rep_celulares.png" alt="Diseño Gráfico">
+                            <div class="course-icon-badge badge-red"><i class="fas fa-palette"></i></div>
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <span
-                                class="badge bg-light text-primary mb-2 align-self-start border border-primary">Técnicos</span>
-                            <h5 class="card-title fw-bold text-dark mb-2"><a
-                                    href="cursos.html?q=Reparación%20de%20Celulares"
-                                    class="text-decoration-none text-dark">Reparación de Celulares</a></h5>
-                            <p class="text-muted small mb-3 flex-grow-1"
-                                style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                                Especialízate en arreglo de módulos, placas, soldadura y software de smartphones.</p>
-
-                            <h6 class="fw-bold fs-5 mb-3" style="color: var(--primary-blue);">$40.000</h6>
-
-                            <div class="d-grid gap-2 mt-auto">
-                                <button class="btn btn-primary btn-sm fw-bold shadow-sm btn-buy-course"
-                                    data-course-name="Reparación de Celulares">
-                                    <i class="fab fa-whatsapp me-1"></i> Inscribirme
-                                </button>
-                                <button class="btn btn-success btn-sm fw-bold shadow-sm btn-add-cart"
-                                    data-course-json='{"category":"Técnicos","name":"Reparación de Celulares","desc":"Especialízate en arreglo de módulos, placas, soldadura y software de smartphones.","img":"img/cursos/rep_celulares.png","price":40000}'>
-                                    <i class="fas fa-cart-plus me-1"></i> Agregar al carrito
-                                </button>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-outline-primary btn-sm w-100 btn-study-plan"
-                                        data-course-name="Reparación de Celulares">
-                                        <i class="far fa-file-alt me-1"></i> Plan
-                                    </button>
-                                    <button class="btn btn-outline-info btn-sm w-100 btn-schedule"
-                                        data-course-name="Reparación de Celulares">
-                                        <i class="far fa-clock me-1"></i> Horarios
-                                    </button>
-                                </div>
-                            </div>
+                        <div class="course-card-body">
+                            <h3 class="course-title">Diseño Gráfico Profesional</h3>
+                            <p class="course-desc">Dominá herramientas de diseño y creá piezas visuales impactantes.</p>
+                            <button class="course-wa-btn btn-buy-course" data-course-name="Diseño Gráfico Profesional">
+                                <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                            </button>
                         </div>
                     </div>
                 </div>
-                <!-- Course Card 3 -->
-                <div class="col-md-4 col-sm-6">
-                    <div data-aos="fade-up" class="card course-card h-100 shadow-sm border-0 position-relative">
-                        <div class="course-img-wrapper" style="height: 180px; overflow: hidden; cursor: pointer;">
-                            <a href="cursos.html?q=Peluquería"><img src="img/cursos/peluqueria.png" alt="Peluquería"
-                                    class="card-img-top w-100 h-100" style="object-fit: cover; aspect-ratio: 16/9;"></a>
+                <!-- Card 3 -->
+                <div class="col-lg col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="course-card-premium">
+                        <div class="course-img-box">
+                            <img src="img/cursos/peluqueria.png" alt="Marketing Digital">
+                            <div class="course-icon-badge badge-blue"><i class="fas fa-bullhorn"></i></div>
                         </div>
-                        <div class="card-body d-flex flex-column">
-                            <span
-                                class="badge bg-light text-primary mb-2 align-self-start border border-primary">Belleza</span>
-                            <h5 class="card-title fw-bold text-dark mb-2"><a href="cursos.html?q=Peluquería"
-                                    class="text-decoration-none text-dark">Peluquería</a></h5>
-                            <p class="text-muted small mb-3 flex-grow-1"
-                                style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                                Aprende corte, colorimetría, peinados y tratamientos capilares.</p>
-
-                            <h6 class="fw-bold fs-5 mb-3" style="color: var(--primary-blue);">$45.000</h6>
-
-                            <div class="d-grid gap-2 mt-auto">
-                                <button class="btn btn-primary btn-sm fw-bold shadow-sm btn-buy-course"
-                                    data-course-name="Peluquería">
-                                    <i class="fab fa-whatsapp me-1"></i> Inscribirme
-                                </button>
-                                <button class="btn btn-success btn-sm fw-bold shadow-sm btn-add-cart"
-                                    data-course-json='{"category":"Belleza","name":"Peluquería","desc":"Aprende corte, colorimetría, peinados y tratamientos capilares.","img":"img/cursos/peluqueria.png","price":45000}'>
-                                    <i class="fas fa-cart-plus me-1"></i> Agregar al carrito
-                                </button>
-                                <div class="d-flex gap-2">
-                                    <button class="btn btn-outline-primary btn-sm w-100 btn-study-plan"
-                                        data-course-name="Peluquería">
-                                        <i class="far fa-file-alt me-1"></i> Plan
-                                    </button>
-                                    <button class="btn btn-outline-info btn-sm w-100 btn-schedule"
-                                        data-course-name="Peluquería">
-                                        <i class="far fa-clock me-1"></i> Horarios
-                                    </button>
-                                </div>
-                            </div>
+                        <div class="course-card-body">
+                            <h3 class="course-title">Marketing Digital y Redes Sociales</h3>
+                            <p class="course-desc">Aprende a promocionar marcas y negocios en el mundo digital.</p>
+                            <button class="course-wa-btn btn-buy-course" data-course-name="Marketing Digital y Redes Sociales">
+                                <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                            </button>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="text-center mt-5">
-                <a href="cursos.html" class="btn btn-hero text-white"
-                    style="background-color: var(--primary-blue); box-shadow: 0 5px 15px rgba(13, 71, 161, 0.4);">Ver
-                    Todas las Áreas</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Why Choose Us -->
-    <section class="py-5" style="background-color: #fff;">
-        <div class="container text-center py-4">
-            <h2 class="area-header">Por qué elegirnos</h2>
-            <div class="row g-4 mt-2">
-                <div class="col-md-4">
-                    <div class="p-4 h-100">
-                        <div data-aos="fade-up" class="feature-icon-box">
-                            <i class="fas fa-briefcase fa-2x"></i>
+                <!-- Card 4 -->
+                <div class="col-lg col-md-6 d-none d-lg-block" data-aos="fade-up" data-aos-delay="300">
+                    <div class="course-card-premium">
+                        <div class="course-img-box">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=400&auto=format&fit=crop" alt="Análisis de Datos">
+                            <div class="course-icon-badge badge-red"><i class="fas fa-chart-bar"></i></div>
                         </div>
-                        <h3 class="h4 font-weight-bold mb-3" style="color: var(--primary-blue);">Capacitación que te
-                            sirve</h3>
-                        <p class="text-muted">Los contenidos se desarrollan en base a estudios sobre las necesidades del
-                            medio actual para que tengas una rápida salida laboral.</p>
+                        <div class="course-card-body">
+                            <h3 class="course-title">Análisis de Datos con Excel</h3>
+                            <p class="course-desc">Convertite en un experto en Excel y analizá datos como un profesional.</p>
+                            <button class="course-wa-btn btn-buy-course" data-course-name="Análisis de Datos con Excel">
+                                <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="p-4 h-100">
-                        <div data-aos="fade-up" class="feature-icon-box" style="background-color: #ffebee;">
-                            <i class="fas fa-list-ul fa-2x" style="color: var(--secondary-red);"></i>
+                <!-- Card 5 -->
+                <div class="col-lg col-md-6 d-none d-lg-block" data-aos="fade-up" data-aos-delay="400">
+                    <div class="course-card-premium">
+                        <div class="course-img-box">
+                            <img src="https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=400&auto=format&fit=crop" alt="Edición de Video">
+                            <div class="course-icon-badge badge-blue"><i class="fas fa-video"></i></div>
                         </div>
-                        <h3 class="h4 font-weight-bold mb-3" style="color: var(--primary-blue);">Variedad de opciones
-                        </h3>
-                        <p class="text-muted">Ofrecemos muchas oportunidades de capacitación y formación, permitiendo
-                            elegir la que más se ajusta a tus necesidades.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="p-4 h-100">
-                        <div data-aos="fade-up" class="feature-icon-box">
-                            <i class="fas fa-star fa-2x"></i>
+                        <div class="course-card-body">
+                            <h3 class="course-title">Edición de Video Profesional</h3>
+                            <p class="course-desc">Aprendé edición de video y creá contenido de calidad.</p>
+                            <button class="course-wa-btn btn-buy-course" data-course-name="Edición de Video Profesional">
+                                <i class="fab fa-whatsapp"></i> Consultar por WhatsApp
+                            </button>
                         </div>
-                        <h3 class="h4 font-weight-bold mb-3" style="color: var(--primary-blue);">Excelencia en lo
-                            aprendido</h3>
-                        <p class="text-muted">La Certificación de Validez Nacional y nuestros docentes reconocidos te
-                            formarán de manera profesional.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials -->
-    <section class="py-5 bg-light">
-        <div class="container py-4">
-            <div class="text-center mb-5">
-                <h2 class="area-header" data-aos="fade-up">Lo que dicen nuestros alumnos</h2>
+    <!-- ¿Por qué elegir Tu Capacitación? -->
+    <section class="why-section" id="why-section">
+        <div class="container">
+            <div class="why-banner" data-aos="fade-up">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 mb-4 mb-lg-0">
+                        <h2 class="why-banner-title">¿Por qué elegir<br>Tu Capacitación?</h2>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="why-grid">
+                            <div class="why-feature-item">
+                                <div class="why-icon-box red-glow"><i class="fas fa-tools"></i></div>
+                                <h4 class="why-feature-title">Formación práctica</h4>
+                                <p class="why-feature-desc">Aprendé haciendo con proyectos reales.</p>
+                            </div>
+                            <div class="why-feature-item">
+                                <div class="why-icon-box"><i class="fas fa-award"></i></div>
+                                <h4 class="why-feature-title">Certificación oficial</h4>
+                                <p class="why-feature-desc">Recibí tu certificado avalado.</p>
+                            </div>
+                            <div class="why-feature-item">
+                                <div class="why-icon-box red-glow"><i class="fas fa-briefcase"></i></div>
+                                <h4 class="why-feature-title">Salida laboral</h4>
+                                <p class="why-feature-desc">Te preparamos para el mundo laboral.</p>
+                            </div>
+                            <div class="why-feature-item">
+                                <div class="why-icon-box"><i class="fas fa-headset"></i></div>
+                                <h4 class="why-feature-title">Acompañamiento</h4>
+                                <p class="why-feature-desc">Soporte y asesoramiento durante todo el curso.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="row align-items-center mb-5">
+                <div class="col-lg-5" data-aos="fade-right">
+                    <div class="section-pretitle">Lo que dicen nuestros alumnos</div>
+                    <h2 class="section-title">Historias reales,<br>resultados <span class="highlight" style="font-style:italic;">reales</span></h2>
+                </div>
             </div>
             <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="testimonial-card-premium">
+                        <div>
+                            <div class="testi-header">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop" alt="Martina R." class="testi-avatar">
+                                <div>
+                                    <div class="testi-name">Martina R.</div>
+                                    <div class="testi-course">Curso de Diseño Gráfico</div>
+                                    <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                </div>
+                            </div>
+                            <p class="testi-quote">"El curso superó mis expectativas. Los profes explican increíble y siempre están para ayudarte."</p>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="testimonial-card text-center">
-                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop"
-                            alt="Alumno 1" class="testimonial-img mb-3 shadow-sm">
-                        <div class="mb-3 text-warning">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <div class="testimonial-card-premium">
+                        <div>
+                            <div class="testi-header">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop" alt="Lucas P." class="testi-avatar">
+                                <div>
+                                    <div class="testi-name">Lucas P.</div>
+                                    <div class="testi-course">Curso de Programación</div>
+                                    <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                </div>
+                            </div>
+                            <p class="testi-quote">"Gracias al curso conseguí mi primer trabajo como desarrollador. 100% recomendado."</p>
                         </div>
-                        <p class="text-muted fst-italic">"El curso de Auxiliar de Farmacia superó mis expectativas. Pude
-                            conseguir trabajo a los pocos meses de haber rendido."</p>
-                        <h6 class="fw-bold mt-3 mb-0" style="color: var(--primary-blue);">María López</h6>
-                        <small class="text-muted">Egresada 2024</small>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="testimonial-card text-center">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=150&auto=format&fit=crop"
-                            alt="Alumno 2" class="testimonial-img mb-3 shadow-sm">
-                        <div class="mb-3 text-warning">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    <div class="testimonial-card-premium">
+                        <div>
+                            <div class="testi-header">
+                                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop" alt="Camila G." class="testi-avatar">
+                                <div>
+                                    <div class="testi-name">Camila G.</div>
+                                    <div class="testi-course">Marketing Digital</div>
+                                    <div class="testi-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+                                </div>
+                            </div>
+                            <p class="testi-quote">"Muy completo y práctico. Pude aplicar lo aprendido desde el primer día."</p>
                         </div>
-                        <p class="text-muted fst-italic">"Gracias al curso de Reparación de Celulares pude abrir mi
-                            propio local. Los profesores siempre atentos a responder."</p>
-                        <h6 class="fw-bold mt-3 mb-0" style="color: var(--primary-blue);">Carlos Giménez</h6>
-                        <small class="text-muted">Egresado 2025</small>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="testimonial-card text-center">
-                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=150&auto=format&fit=crop"
-                            alt="Alumno 3" class="testimonial-img mb-3 shadow-sm">
-                        <div class="mb-3 text-warning">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="text-muted fst-italic">"Me encantó el curso de Peluquería. Hice muchas prácticas
-                            reales y hoy trabajo en uno de los salones más grandes de mi ciudad."</p>
-                        <h6 class="fw-bold mt-3 mb-0" style="color: var(--primary-blue);">Valeria Sosa</h6>
-                        <small class="text-muted">Egresada 2025</small>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="py-5" style="background-color: white;">
-        <div class="container py-4">
-            <div class="row align-items-center">
-                <div class="col-lg-5 mb-5 mb-lg-0 pr-lg-5 text-center text-lg-start" data-aos="fade-right">
-                    <h2 class="area-header mb-4 text-start">Preguntas Frecuentes</h2>
-                    <p class="lead text-muted">Resolvemos tus principales inquietudes para que comiences a estudiar hoy
-                        mismo.</p>
-                    <a href="contacto.html" class="btn btn-outline-primary btn-lg mt-3 fw-bold shadow-sm"
-                        style="border-radius: 30px;">
-                        Tengo otra duda <i class="fas fa-arrow-right ms-2"></i>
-                    </a>
+    <!-- ¿Cómo funciona? -->
+    <section class="steps-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">¿Cómo funciona?</h2>
+            <div class="steps-container">
+                <div class="step-item step-blue" data-aos="fade-up">
+                    <div class="step-num">1</div>
+                    <h4 class="step-title">Elegís tu curso</h4>
+                    <p class="step-desc">Explorá nuestros cursos y elegí el que más se adapte a vos.</p>
                 </div>
-                <div class="col-lg-7" data-aos="fade-left">
-                    <div class="accordion faq-accordion shadow-sm rounded-4" id="faqAccordion">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    <i class="fas fa-certificate me-3"></i> ¿Qué validez tiene el certificado?
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                                data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-muted">
-                                    Todos nuestros cursos cuentan con <strong>Validez Nacional</strong>, lo cual
-                                    significa que puedes presentar tu certificación en cualquier parte del país y es
-                                    plenamente reconocida para tu currículum y salida laboral.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    <i class="far fa-calendar-alt me-3"></i> ¿Cuándo comienzan las clases?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-muted">
-                                    Tenemos inscripciones abiertas constantemente con inicios todos los meses. Puedes
-                                    consultar el <strong>Plan y Horarios</strong> específicos en la pestaña de Cursos o
-                                    enviarnos un WhatsApp pulsando el botón de inscribirme en el curso de tu interés.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <i class="fas fa-credit-card me-3"></i> ¿Cuáles son los métodos de pago?
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                data-bs-parent="#faqAccordion">
-                                <div class="accordion-body text-muted">
-                                    Aceptamos Efectivo en la Sedes, Transferencias Bancarias, Mercado Pago (con tarjetas
-                                    de débito y crédito), y RapiPago/PagoFácil.
-                                </div>
-                            </div>
-                        </div>
+                <div class="step-item step-red" data-aos="fade-up" data-aos-delay="100">
+                    <div class="step-num">2</div>
+                    <h4 class="step-title">Hablás por WhatsApp</h4>
+                    <p class="step-desc">Consultá tus dudas y recibí asesoramiento personalizado al instante.</p>
+                </div>
+                <div class="step-item step-blue" data-aos="fade-up" data-aos-delay="200">
+                    <div class="step-num">3</div>
+                    <h4 class="step-title">Reservás tu vacante</h4>
+                    <p class="step-desc">Te ayudamos a completar tu inscripción de manera rápida y simple.</p>
+                </div>
+                <div class="step-item step-red" data-aos="fade-up" data-aos-delay="300">
+                    <div class="step-num">4</div>
+                    <h4 class="step-title">¡Empezás a aprender!</h4>
+                    <p class="step-desc">Accedé al campus y comenzá a transformar tu futuro.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="cta-final-section">
+        <div class="container">
+            <div class="cta-banner" data-aos="fade-up">
+                <div class="cta-content">
+                    <div class="cta-icon-wrapper"><i class="fab fa-whatsapp"></i></div>
+                    <div>
+                        <h3 class="cta-title">¿Listo para dar el próximo paso?</h3>
+                        <p class="cta-desc">Escribinos por WhatsApp y te asesoramos sin compromiso.</p>
                     </div>
                 </div>
+                <a href="https://wa.me/5493855140883?text=Hola,%20quiero%20hablar%20con%20un%20asesor" target="_blank" class="btn-hero-primary" style="flex-shrink:0;">
+                    Quiero hablar con un asesor
+                </a>
             </div>
         </div>
     </section>
@@ -493,28 +367,66 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="row">
-                <div data-aos="fade-up" class="col-md-4 mb-4">
-                    <h4 class="fw-bold mb-3" style="color: var(--secondary-red);">Tu Capacitación</h4>
-                    <p class="text-light" style="opacity: 0.8;">Formación con salida laboral. Capacitate en las áreas
-                        con más demanda en el mercado de trabajo actual.</p>
+            <div class="row footer-benefits mb-0 pb-4" data-aos="fade-up">
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="footer-benefit-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <div>
+                            <div class="footer-benefit-title">Clases en vivo</div>
+                            <div class="footer-benefit-sub">Interacción real</div>
+                        </div>
+                    </div>
                 </div>
-                <div data-aos="fade-up" class="col-md-4 mb-4">
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="footer-benefit-item">
+                        <i class="fas fa-sync-alt"></i>
+                        <div>
+                            <div class="footer-benefit-title">Material actualizado</div>
+                            <div class="footer-benefit-sub">Siempre al día</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="footer-benefit-item">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <div class="footer-benefit-title">Certificado oficial</div>
+                            <div class="footer-benefit-sub">Al finalizar el curso</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="footer-benefit-item">
+                        <i class="fas fa-headset"></i>
+                        <div>
+                            <div class="footer-benefit-title">Soporte continuo</div>
+                            <div class="footer-benefit-sub">Te acompañamos siempre</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4 mb-4">
+                    <h4 class="fw-bold mb-3" style="color: var(--accent-red);">Tu Capacitación</h4>
+                    <p class="text-light" style="opacity: 0.8;">Formación con salida laboral. Capacitate en las áreas con más demanda en el mercado de trabajo actual.</p>
+                </div>
+                <div class="col-md-4 mb-4">
                     <h5 class="fw-bold mb-3">Enlaces Rápidos</h5>
                     <ul class="list-unstyled" style="line-height: 2;">
                         <li><a href="instituto.html">Nosotros</a></li>
                         <li><a href="cursos.html">Cursos</a></li>
                         <li><a href="sedes.html">Sedes</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="trabaja-con-nosotros.html">Trabaja con nosotros</a></li>
                         <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="terminos-y-condiciones.html">Términos y Condiciones</a></li>
+                        <li><a href="http://200.58.126.154:3001/" target="_blank" class="text-warning fw-semibold"><i class="fas fa-lock me-1"></i> Portal Empleados</a></li>
                     </ul>
                 </div>
-                <div data-aos="fade-up" class="col-md-4 mb-4">
+                <div class="col-md-4 mb-4">
                     <h5 class="fw-bold mb-3">Contáctanos</h5>
-                    <p class="mb-2"><i class="fab fa-whatsapp me-2" style="color: #25d366;"></i> <a
-                            href="https://wa.me/5493855140883" target="_blank"
-                            class="text-white text-decoration-none">+54 9 385 514-0883</a></p>
-                    <p><i class="fas fa-envelope me-2" style="color: var(--secondary-red);"></i>
-                        info@tucapacitacion.com.ar</p>
+                    <p class="mb-2"><i class="fab fa-whatsapp me-2" style="color: #25d366;"></i> <a href="https://wa.me/5493855140883" target="_blank" class="text-white text-decoration-none">+54 9 385 514-0883</a></p>
+                    <p><i class="fas fa-envelope me-2" style="color: var(--accent-red);"></i> info@tucapacitacion.com.ar</p>
                 </div>
             </div>
             <div class="text-center mt-4 pt-4 border-top border-secondary opacity-75">
@@ -523,73 +435,20 @@
         </div>
     </footer>
 
-    <!-- Social Floating Buttons (Grouped) -->
-
-    <!-- Floating Cart -->
-    <div class="cart-float position-fixed dropdown dropup" style="bottom: 190px; right: 40px; z-index: 1060;">
-        <button
-            class="btn btn-primary rounded-circle shadow-lg d-flex align-items-center justify-content-center dropdown-toggle cart-icon"
-            type="button" id="cartFloatDropdown" data-bs-toggle="dropdown" aria-expanded="false"
-            style="width: 60px; height: 60px; font-size: 24px; padding: 0; background-color: var(--primary-blue); border-color: var(--primary-blue);">
-            <i class="fas fa-shopping-cart"></i>
-            <span
-                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger shadow-sm cart-count"
-                style="font-size: 0.75rem;">
-                0
-                <span class="visually-hidden">cursos en carrito</span>
-            </span>
-        </button>
-        <div class="dropdown-menu dropdown-menu-end mb-3 shadow-lg border-0 rounded-3 p-0 cart-dropdown"
-            aria-labelledby="cartFloatDropdown" style="width: 350px;">
-            <div
-                class="bg-light px-3 py-2 border-bottom rounded-top-3 d-flex justify-content-between align-items-center">
-                <h6 class="mb-0 fw-bold" style="color: var(--primary-blue);">Mi Carrito</h6>
-                <span class="badge bg-primary rounded-pill cart-count">0</span>
-            </div>
-            <div id="cart-items" class="p-2 overflow-auto" style="max-height: 300px;">
-                <!-- Items injected by JS -->
-                <div class="text-center p-3 text-muted small">Tu carrito está vacío</div>
-            </div>
-            <div class="p-3 bg-light border-top rounded-bottom-3">
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="fw-bold text-muted">Total:</span>
-                    <span class="fw-bold fs-5 text-dark" id="cart-total">$0</span>
-                </div>
-                <!-- WhatsApp Checkout btn -->
-                <button class="btn btn-success w-100 fw-bold shadow-sm" id="btn-checkout" disabled>
-                    <i class="fab fa-whatsapp me-2"></i>Abonar o pedir más info
-                </button>
-            </div>
-        </div>
-    </div>
-
+    <!-- Social Floating Buttons -->
     <div class="social-float-container">
-        <!-- Floating Toggle -->
-        <button class="social-float-main shadow-lg" id="socialFloatToggle">
-            <i class="fas fa-plus"></i>
-        </button>
-        <!-- Independent WhatsApp -->
-        <a href="https://wa.me/5493855140883" class="social-float-wa shadow-lg" target="_blank">
-            <i class="fab fa-whatsapp"></i>
-        </a>
-        <!-- Grouped Socials -->
+        <button class="social-float-main shadow-lg" id="socialFloatToggle"><i class="fas fa-plus"></i></button>
+        <a href="https://wa.me/5493855140883" class="social-float-wa shadow-lg" target="_blank"><i class="fab fa-whatsapp"></i></a>
         <div class="social-float-links">
-            <a href="https://www.facebook.com/Tucapacitacionoficial" class="social-float-item facebook"
-                target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://www.instagram.com/tucapacitacionoficial" class="social-float-item instagram"
-                target="_blank"><i class="fab fa-instagram"></i></a>
-            <a href="https://www.tiktok.com/@tucapacitacion" class="social-float-item tiktok" target="_blank"><i
-                    class="fab fa-tiktok"></i></a>
-            <a href="https://www.youtube.com/@tucapacitacion" class="social-float-item youtube" target="_blank"><i
-                    class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/Tucapacitacionoficial" class="social-float-item facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/tucapacitacionoficial" class="social-float-item instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@tucapacitacion" class="social-float-item tiktok" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@tucapacitacion" class="social-float-item youtube" target="_blank"><i class="fab fa-youtube"></i></a>
         </div>
     </div>
 
-    <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS -->
     <script src="js/main.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 </body>
-
 </html>
