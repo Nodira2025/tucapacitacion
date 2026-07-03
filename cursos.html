@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursos con Rápida Salida Laboral | Oferta Académica 2026</title>
+    <meta name="description"
+        content="Explorá nuestros cursos en Salud, Técnica, Belleza, Contable e Informática. Capacitación presencial en Santiago del Estero diseñada para el empleo inmediato.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cursos con Rápida Salida Laboral | Oferta Académica 2026">
+    <meta property="og:description"
+        content="Elegí tu curso y empezá a trabajar. Capacitación intensiva en Santiago del Estero.">
+    <meta property="og:image" content="https://www.tucapacitacion.com/img/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .category-btn {
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            font-weight: 600;
+            border-radius: 20px;
+            padding: 8px 16px;
+            margin: 5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: transparent;
+        }
+
+        .category-btn:hover,
+        .category-btn.active {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        .course-list-item {
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .course-list-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        /* Autocomplete dropdown styles */
+        #searchDropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            max-height: 250px;
+            overflow-y: auto;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            border-radius: 0 0 10px 10px;
+        }
+
+        .search-dropdown-item {
+            padding: 12px 20px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+            background: white;
+            color: #333;
+            transition: background 0.2s;
+        }
+
+        .search-dropdown-item:last-child {
+            border-bottom: none;
+            border-radius: 0 0 10px 10px;
+        }
+
+        .search-dropdown-item:hover {
+            background-color: var(--light-blue);
+        }
+
+        /* Modal customizations */
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+            overflow: hidden;
+        }
+
+        .modal-header-custom {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            z-index: 10;
+        }
+
+        .btn-close-modal {
+            background-color: white;
+            /* Use background-color instead of background to keep the SVG icon */
+            opacity: 0.9;
+            border-radius: 50%;
+            padding: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s;
+        }
+
+        .btn-close-modal:hover {
+            transform: scale(1.1);
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
+        <div class="container">
+            <!-- Mobile Search Icon (Left) -->
+            <div class="mobile-search-btn d-lg-none">
+                <a href="cursos.html" class="text-white text-decoration-none">
+                    <i class="fas fa-search fa-lg"></i>
+                </a>
+            </div>
+
+            <!-- Logo (Center) -->
+            <a class="navbar-brand" href="index.html">
+                <img src="img/logo.png" alt="Tu Capacitación"
+                    onerror="this.onerror=null; this.src=''; this.alt='Tu Capacitación'; this.style.color='white'; this.style.fontWeight='800'; this.style.fontSize='22px';">
+            </a>
+
+            <!-- Toggle Button (Right) -->
+            <button class="navbar-toggler text-white border-0" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="instituto.html">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="cursos.html">Cursos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sedes.html">Sedes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="galeria.html">Galería</a></li>
+                    <li class="nav-item"><a class="nav-link" href="trabaja-con-nosotros.html">Trabajo</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+                    <li class="nav-item d-none d-lg-flex ms-lg-3 align-items-center">
+                        <form class="navbar-search" action="cursos.html" method="GET">
+                            <input class="form-control form-control-sm shadow-none" type="search"
+                                placeholder="Buscar curso..." aria-label="Buscar" name="q">
+                            <button class="btn btn-sm shadow-none" type="submit">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section sub-page">
+        <div class="container text-center hero-content-wrapper">
+            <h1 class="display-4 fw-bold mb-3">Cursos Disponibles en Santiago del Estero</h1>
+            <p class="lead mx-auto mb-4">Especializate en las áreas con más empleo. Elegí tu formación hoy.</p>
+
+            <!-- Search Bar with Autocomplete -->
+            <div class="row justify-content-center">
+                <div class="col-md-8 position-relative">
+                    <div class="input-group input-group-lg shadow-sm" style="border-radius: 10px; z-index: 1001;">
+                        <span class="input-group-text bg-white border-end-0" style="border-radius: 10px 0 0 10px;"><i
+                                class="fas fa-search text-muted"></i></span>
+                        <input type="text" id="searchInput" class="form-control border-start-0 ps-0"
+                            placeholder="Buscar un curso (ej. Reparación de PC)..."
+                            style="border-radius: 0 10px 10px 0;">
+                    </div>
+                    <div id="searchDropdown" class="list-group text-start">
+                        <!-- Autocomplete items injected here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container py-5">
+        <!-- Categories Select -->
+        <div class="row justify-content-center mb-5 g-3">
+            <div class="col-md-5 col-lg-4">
+                <label for="categorySelect" class="form-label fw-bold" style="color: var(--primary-blue);">Filtrar por
+                    Área:</label>
+                <select id="categorySelect" class="form-select form-select-lg shadow-sm"
+                    style="border-radius: 10px; border: 2px solid var(--primary-blue); cursor: pointer;">
+                    <!-- Injected via JS -->
+                </select>
+            </div>
+            <div class="col-md-5 col-lg-4">
+                <label for="sortBy" class="form-label fw-bold" style="color: var(--primary-blue);">Ordenar por:</label>
+                <select id="sortBy" class="form-select form-select-lg shadow-sm"
+                    style="border-radius: 10px; border: 2px solid var(--primary-blue); cursor: pointer;">
+                    <option value="default">Recomendados</option>
+                    <option value="cheap">Menor precio</option>
+                    <option value="popular">Más elegidos</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <!-- Course List (Expanded to center) -->
+            <div class="col-md-10 mb-4">
+                <div data-aos="fade-up" class="card shadow-sm border-0 h-100">
+                    <div class="card-header bg-white border-bottom-0 pt-4 pb-2 text-center">
+                        <h4 class="fw-bold" style="color: var(--primary-blue);" id="list-title">Elegí la carrera que
+                            cambiará tu vida</h4>
+                    </div>
+                    <div class="row g-4 p-4 overflow-auto" style="max-height: 750px;" id="course-list">
+                        <!-- Injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Course Overlay Modal -->
+    <div class="modal fade" id="courseModal" tabindex="-1" aria-labelledby="courseModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header-custom">
+                    <button type="button" class="btn-close btn-close-modal" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <img id="detail-img" src="" class="card-img-top w-100" alt="Course Image"
+                    style="height: 350px; object-fit: cover;">
+                <div class="modal-body p-5 text-center">
+                    <span id="detail-category" class="badge bg-secondary mb-3 px-3 py-2 fs-6"></span>
+                    <h2 id="detail-title" class="fw-bold mb-3" style="color: var(--primary-blue);">Título</h2>
+                    <p id="detail-desc" class="text-muted mb-4 lead">Descripción corta.</p>
+
+                    <div class="d-flex justify-content-center flex-wrap gap-4 mb-4 text-muted">
+                        <span><i class="fas fa-map-marker-alt me-2 text-danger"></i>Presencial</span>
+                        <span><i class="far fa-clock me-2 text-secondary"></i><span id="detail-duration"></span>
+                            meses</span>
+                        <span class="text-warning fw-bold"><i class="fas fa-star me-2"></i><span
+                                id="detail-rating"></span></span>
+                        <span><i class="fas fa-user-graduate me-2"></i><span id="detail-students"></span>
+                            inscriptos</span>
+                    </div>
+
+                    <h4 id="detail-price" class="fw-bold fs-4 mb-4" style="color: var(--primary-blue);">$0</h4>
+
+                    <div class="d-grid gap-3">
+                        <button id="detail-buy-btn" class="btn btn-primary btn-lg fw-bold shadow-sm btn-buy-course"
+                            data-course-name="">
+                            <i class="fab fa-whatsapp me-2"></i> Inscribirme
+                        </button>
+                        <button id="detail-add-cart-btn" class="btn btn-success btn-lg fw-bold shadow-sm btn-add-cart"
+                            data-course-json=''>
+                            <i class="fas fa-cart-plus me-2"></i> Agregar al carrito
+                        </button>
+                        <div class="d-flex gap-2">
+                            <button id="detail-study-plan-btn"
+                                class="btn btn-outline-primary btn-lg w-100 btn-study-plan" data-course-name="">
+                                <i class="far fa-file-alt me-2"></i> Plan de Estudio
+                            </button>
+                            <button id="detail-schedule-btn" class="btn btn-outline-info btn-lg w-100 btn-schedule"
+                                data-course-name="">
+                                <i class="far fa-clock me-2"></i> Horarios
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row footer-benefits mb-0 pb-4" data-aos="fade-up">
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="footer-benefit-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <div>
+                            <div class="footer-benefit-title">Clases en vivo</div>
+                            <div class="footer-benefit-sub">Interacción real</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="footer-benefit-item">
+                        <i class="fas fa-sync-alt"></i>
+                        <div>
+                            <div class="footer-benefit-title">Material actualizado</div>
+                            <div class="footer-benefit-sub">Siempre al día</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="footer-benefit-item">
+                        <i class="fas fa-certificate"></i>
+                        <div>
+                            <div class="footer-benefit-title">Certificado oficial</div>
+                            <div class="footer-benefit-sub">Al finalizar el curso</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-3">
+                    <div class="footer-benefit-item">
+                        <i class="fas fa-headset"></i>
+                        <div>
+                            <div class="footer-benefit-title">Soporte continuo</div>
+                            <div class="footer-benefit-sub">Te acompañamos siempre</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-4 mb-4">
+                    <h4 class="fw-bold mb-3" style="color: var(--accent-red);">Tu Capacitación</h4>
+                    <p class="text-light" style="opacity: 0.8;">Formación con salida laboral. Capacitate en las áreas con más demanda en el mercado de trabajo actual.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">Enlaces Rápidos</h5>
+                    <ul class="list-unstyled" style="line-height: 2;">
+                        <li><a href="instituto.html">Nosotros</a></li>
+                        <li><a href="cursos.html">Cursos</a></li>
+                        <li><a href="sedes.html">Sedes</a></li>
+                        <li><a href="galeria.html">Galería</a></li>
+                        <li><a href="trabaja-con-nosotros.html">Trabaja con nosotros</a></li>
+                        <li><a href="contacto.html">Contacto</a></li>
+                        <li><a href="terminos-y-condiciones.html">Términos y Condiciones</a></li>
+                        <li><a href="http://200.58.126.154:3001/" target="_blank" class="text-warning fw-semibold"><i class="fas fa-lock me-1"></i> Portal Empleados</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold mb-3">Contáctanos</h5>
+                    <p class="mb-2"><i class="fab fa-whatsapp me-2" style="color: #25d366;"></i> <a href="https://wa.me/5493855140883" target="_blank" class="text-white text-decoration-none">+54 9 385 514-0883</a></p>
+                    <p><i class="fas fa-envelope me-2" style="color: var(--accent-red);"></i> info@tucapacitacion.com.ar</p>
+                </div>
+            </div>
+            <div class="text-center mt-4 pt-4 border-top border-secondary opacity-75">
+                <p class="mb-0">&copy; 2026 Tu Capacitación. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Social Floating Buttons (Grouped) -->
+
+    <!-- Floating Cart -->
+    <div class="cart-float position-fixed dropdown dropup" style="bottom: 190px; right: 40px; z-index: 1060;">
+        <button
+            class="btn btn-primary rounded-circle shadow-lg d-flex align-items-center justify-content-center dropdown-toggle cart-icon"
+            type="button" id="cartFloatDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+            style="width: 60px; height: 60px; font-size: 24px; padding: 0; background-color: var(--primary-blue); border-color: var(--primary-blue);">
+            <i class="fas fa-shopping-cart"></i>
+            <span
+                class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger shadow-sm cart-count"
+                style="font-size: 0.75rem;">
+                0
+                <span class="visually-hidden">cursos en carrito</span>
+            </span>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end mb-3 shadow-lg border-0 rounded-3 p-0 cart-dropdown"
+            aria-labelledby="cartFloatDropdown" style="width: 350px;">
+            <div
+                class="bg-light px-3 py-2 border-bottom rounded-top-3 d-flex justify-content-between align-items-center">
+                <h6 class="mb-0 fw-bold" style="color: var(--primary-blue);">Mi Carrito</h6>
+                <span class="badge bg-primary rounded-pill cart-count">0</span>
+            </div>
+            <div id="cart-items" class="p-2 overflow-auto" style="max-height: 300px;">
+                <!-- Items injected by JS -->
+                <div class="text-center p-3 text-muted small">Tu carrito está vacío</div>
+            </div>
+            <div class="p-3 bg-light border-top rounded-bottom-3">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <span class="fw-bold text-muted">Total:</span>
+                    <span class="fw-bold fs-5 text-dark" id="cart-total">$0</span>
+                </div>
+                <!-- WhatsApp Checkout btn -->
+                <button class="btn btn-success w-100 fw-bold shadow-sm" id="btn-checkout" disabled>
+                    <i class="fab fa-whatsapp me-2"></i>Abonar o pedir más info
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="social-float-container">
+        <!-- Floating Toggle -->
+        <button class="social-float-main shadow-lg" id="socialFloatToggle">
+            <i class="fas fa-plus"></i>
+        </button>
+        <!-- Independent WhatsApp -->
+        <a href="https://wa.me/5493855140883" class="social-float-wa shadow-lg" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <!-- Grouped Socials -->
+        <div class="social-float-links">
+            <a href="https://www.facebook.com/Tucapacitacionoficial" class="social-float-item facebook"
+                target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/tucapacitacionoficial" class="social-float-item instagram"
+                target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@tucapacitacion" class="social-float-item tiktok" target="_blank"><i
+                    class="fab fa-tiktok"></i></a>
+            <a href="https://www.youtube.com/@tucapacitacion" class="social-float-item youtube" target="_blank"><i
+                    class="fab fa-youtube"></i></a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- GSAP & ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        const courseData = [
+            // Administrativa
+            { category: "Administrativa", name: "Secretario Administrativo", desc: "Gestión de archivos, facturación, atención al cliente y herramientas administrativas esenciales para oficinas y empresas.", img: "img/cursos/secretariado.png", price: 40000 },
+            { category: "Administrativa", name: "Cajero Comercial", desc: "Técnicas de facturación, medios de pago, arqueo de caja, atención al público y control de stock.", img: "img/cursos/cajero.png", price: 40000 },
+
+            // Técnica
+            { category: "Técnica", name: "Reparación de Celulares", desc: "Diagnóstico y reparación física y de software en dispositivos móviles. Soldadura, cambio de pantallas y fallas comunes.", img: "img/cursos/rep_celulares.png", price: 42000 },
+            { category: "Técnica", name: "Técnico en Refrigeración", desc: "Instalación, mantenimiento preventivo y reparación de equipos de refrigeración y aire acondicionado familiares y comerciales.", img: "img/cursos/refrigeracion.png", price: 45000 },
+            { category: "Técnica", name: "Electricidad", desc: "Instalaciones eléctricas residenciales y comerciales, normativas de seguridad, tableros y mantenimiento de redes eléctricas.", img: "img/cursos/electricidad.png", price: 40000 },
+
+            // Informática
+            { category: "Informática", name: "Operador de PC", desc: "Manejo completo de Windows, Microsoft Office (Word, Excel, PowerPoint), correo electrónico e internet para desempeño laboral rápido.", img: "img/cursos/operador_pc.png", price: 40000 },
+            { category: "Informática", name: "Diseño Gráfico", desc: "Creación de piezas visuales y contenido publicitario profesional con Photoshop e Illustrator.", img: "img/cursos/diseno_grafico.png", price: 40000 },
+            { category: "Informática", name: "Programación", desc: "Introducción al desarrollo de software y lenguajes de código modernos para inserción en la industria IT.", img: "img/cursos/programacion.png", price: 45000 },
+            { category: "Informática", name: "Marketing Digital", desc: "Estrategias de publicidad en redes sociales, posicionamiento SEO/SEM y administración de contenidos digitales.", img: "img/cursos/marketing.png", price: 40000 },
+
+            // Belleza
+            { category: "Belleza", name: "Estética Integral", desc: "Tratamientos estéticos faciales y corporales, cuidados de la piel, cosmetología básica y bienestar integral de los clientes.", img: "img/cursos/estetica_integral.png", price: 45000 },
+            { category: "Belleza", name: "Peluquería Profesional", desc: "Técnicas modernas de corte, colorimetría, peinado, peinados artísticos y tratamientos capilares completos.", img: "img/cursos/peluqueria.png", price: 45000 },
+            { category: "Belleza", name: "Barbería y Peluquería Masculina", desc: "Cortes de cabello para hombres, técnicas de afeitado tradicional, perfilado de barba y diseños de tendencia.", img: "img/cursos/barberia.png", price: 45000 },
+
+            // Salud
+            { category: "Salud", name: "Acompañante Terapéutico", desc: "Rol fundamental en el cuidado de la salud mental, contención y acompañamiento personalizado a pacientes en tratamiento.", img: "img/cursos/acomp_terapeutico.png", price: 40000 },
+            { category: "Salud", name: "Masajista Profesional", desc: "Práctica de masajes corporales relajantes, descontracturantes, deportivos y técnicas de bienestar físico.", img: "img/cursos/masajista_profesional.png", price: 42000 },
+            { category: "Salud", name: "Lengua de Señas", desc: "Aprendizaje del alfabeto dactilológico y la estructura gramatical de la Lengua de Señas para una comunicación inclusiva y accesible.", img: "img/cursos/lengua_senas.png", price: 40000 },
+            { category: "Salud", name: "Auxiliar en Veterinaria", desc: "Asistencia al médico veterinario en clínicas. Cuidado de mascotas, instrumental, curaciones y atención pre y post operatoria.", img: "img/cursos/aux_veterinaria.png", price: 40000 },
+            { category: "Salud", name: "Asistente Paramédico", desc: "Primeros auxilios avanzados, atención prehospitalaria en situaciones de emergencia y soporte vital básico.", img: "img/cursos/asist_paramedico.png", price: 40000 },
+            { category: "Salud", name: "Auxiliar en Farmacia", desc: "Atención al público en farmacias, control de stock, recetas de obras sociales, medicamentos y dispensación segura.", img: "img/cursos/aux_farmacia.png", price: 40000 },
+            { category: "Salud", name: "Agente Sanitario", desc: "Promoción de la salud comunitaria, campañas preventivas, visitas sanitarias y nexo de salud con las familias.", img: "img/cursos/agente_sanitario.png", price: 40000 },
+            { category: "Salud", name: "Cosmetología", desc: "Cuidado de la piel sana, higiene profunda, tratamientos dermoestéticos faciales, masajes de rostro y uso de principios activos.", img: "img/cursos/cosmetologia.png", price: 42000 }
+        ];
+
+        // Ensure unique categories
+        const categories = ["Todos", ...new Set(courseData.map(c => c.category))];
+        let currentCategory = "Todos";
+        let currentSearch = "";
+
+        // Generate random stats for courses once
+        courseData.forEach(course => {
+            course.rating = (Math.random() * (4.2 - 3.5) + 3.5).toFixed(1);
+            course.duration = Math.floor(Math.random() * (9 - 3 + 1)) + 3;
+            course.students = Math.floor(Math.random() * (923 - 178 + 1)) + 178;
+        });
+
+        const catSelect = document.getElementById("categorySelect");
+        const listContainer = document.getElementById("course-list");
+        const listTitle = document.getElementById("list-title");
+        const searchInput = document.getElementById("searchInput");
+        const searchDropdown = document.getElementById("searchDropdown");
+
+        // Bootstrap Modal Instance
+        let courseModal;
+
+        // Elements in detail card
+        const dTitle = document.getElementById("detail-title");
+        const dImg = document.getElementById("detail-img");
+        const dDesc = document.getElementById("detail-desc");
+        const dCat = document.getElementById("detail-category");
+        const dBtn = document.getElementById("detail-buy-btn");
+        const dDuration = document.getElementById("detail-duration");
+        const dRating = document.getElementById("detail-rating");
+        const dStudents = document.getElementById("detail-students");
+
+        let visibleLimit = 16; // Default starting limit to show all
+
+        function renderCategories() {
+            catSelect.innerHTML = "";
+            categories.forEach(cat => {
+                const opt = document.createElement("option");
+                opt.value = cat;
+                opt.textContent = cat;
+                if (cat === currentCategory) opt.selected = true;
+                catSelect.appendChild(opt);
+            });
+
+            catSelect.addEventListener("change", (e) => {
+                currentCategory = e.target.value;
+                visibleLimit = 16; // Reset to show all by default
+                renderList();
+            });
+
+            const sortBySelect = document.getElementById("sortBy");
+            if (sortBySelect) {
+                sortBySelect.addEventListener("change", () => {
+                    renderList();
+                });
+            }
+        }
+
+        function renderList() {
+            if (!listContainer) return;
+            listContainer.innerHTML = "";
+            let filtered = [...courseData];
+
+            if (currentCategory !== "Todos") {
+                filtered = filtered.filter(c => c.category === currentCategory);
+                listTitle.textContent = currentCategory;
+            } else {
+                listTitle.textContent = "Elegí la carrera que cambiará tu vida";
+            }
+
+            if (currentSearch && currentSearch.trim() !== "") {
+                const term = currentSearch.toLowerCase();
+                filtered = filtered.filter(c => c.name.toLowerCase().includes(term));
+            }
+
+            // Sort logic
+            const sortBySelect = document.getElementById("sortBy");
+            const sortByValue = sortBySelect ? sortBySelect.value : "default";
+
+            if (sortByValue === "cheap") {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortByValue === "popular") {
+                filtered.sort((a, b) => (b.students || 0) - (a.students || 0));
+            }
+
+            if (filtered.length === 0) {
+                listContainer.innerHTML = '<div class="col-12 text-center text-muted p-5">No se encontraron cursos.</div>';
+                return;
+            }
+
+            const itemsToShow = filtered.slice(0, visibleLimit);
+
+            itemsToShow.forEach(course => {
+                const col = document.createElement("div");
+                col.className = "col-md-6 col-lg-4";
+
+                const badgeHTML = course.students > 800 ? `<div class="position-absolute shadow-sm" style="top: -10px; right: -10px; z-index: 10;"><span class="badge bg-warning text-dark py-2 px-3 fs-6 rounded-pill border border-white"><i class="fas fa-fire me-1"></i> Más Vendido</span></div>` : '';
+                const courseStr = JSON.stringify(course).replace(/'/g, "&#39;").replace(/"/g, "&quot;");
+
+                col.innerHTML = `
+                    <div class="card course-card-premium h-100 shadow-sm border-0 position-relative">
+                        ${badgeHTML}
+                        <div class="course-img-wrapper" style="height: 180px; overflow: hidden; cursor: pointer;">
+                            <img src="${course.img}" alt="${course.name}" class="card-img-top w-100 h-100 course-detail-trigger" style="object-fit: cover; aspect-ratio: 16/9;">
+                        </div>
+                        <div class="card-body d-flex flex-column">
+                            <span class="badge bg-light text-primary mb-2 align-self-start border border-primary">${course.category}</span>
+                            <h5 class="card-title fw-bold text-dark mb-2 course-detail-trigger" style="font-size: 1.15rem; cursor: pointer;">${course.name}</h5>
+                            <p class="text-muted small mb-3 flex-grow-1" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${course.desc}</p>
+                            
+                            <h6 class="fw-bold fs-5 mb-3" style="color: var(--primary-blue);">$${course.price.toLocaleString('es-AR')}</h6>
+                            
+                            <div class="d-grid gap-2 mt-auto">
+                                <button class="btn btn-primary btn-sm fw-bold shadow-sm btn-buy-course" data-course-name="${course.name}">
+                                    <i class="fab fa-whatsapp me-1"></i> Inscribirme
+                                </button>
+                                <button class="btn btn-success btn-sm fw-bold shadow-sm btn-add-cart" data-course-json='${courseStr}'>
+                                    <i class="fas fa-cart-plus me-1"></i> Agregar al carrito
+                                </button>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-primary btn-sm w-100 btn-study-plan" data-course-name="${course.name}">
+                                        <i class="far fa-file-alt me-1"></i> Plan
+                                    </button>
+                                    <button class="btn btn-outline-info btn-sm w-100 btn-schedule" data-course-name="${course.name}">
+                                        <i class="far fa-clock me-1"></i> Horarios
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                const triggers = col.querySelectorAll('.course-detail-trigger');
+                triggers.forEach(t => t.onclick = () => showDetail(course));
+                listContainer.appendChild(col);
+            });
+
+            const existingBtn = document.getElementById("load-more-btn-container");
+            if (existingBtn) existingBtn.remove();
+
+            if (filtered.length > visibleLimit) {
+                const btnContainer = document.createElement("div");
+                btnContainer.id = "load-more-btn-container";
+                btnContainer.className = "text-center p-3 w-100 mt-4";
+                btnContainer.innerHTML = `<button class="btn fw-bold px-4 py-2" style="background-color: var(--primary-blue); color: white; border-radius: 8px;">Mostrar más</button>`;
+                btnContainer.querySelector("button").onclick = () => {
+                    visibleLimit = filtered.length;
+                    renderList();
+                };
+                listContainer.appendChild(btnContainer);
+            }
+
+            if (typeof AOS !== 'undefined') AOS.refresh();
+        }
+
+        function showDetail(course) {
+            dTitle.textContent = course.name;
+            dDesc.textContent = course.desc;
+            dCat.textContent = course.category;
+            dImg.src = course.img;
+
+            const detailPrice = document.getElementById("detail-price");
+            if (detailPrice) detailPrice.textContent = "$" + course.price.toLocaleString('es-AR');
+
+            const detailBuyBtn = document.getElementById("detail-buy-btn");
+            if (detailBuyBtn) detailBuyBtn.setAttribute("data-course-name", course.name);
+
+            const addCartBtn = document.getElementById("detail-add-cart-btn");
+            if (addCartBtn) {
+                // Escape simple quotes just in case
+                const courseStr = JSON.stringify(course).replace(/'/g, "&#39;").replace(/"/g, "&quot;");
+                addCartBtn.setAttribute("data-course-json", courseStr);
+            }
+
+            const studyBtn = document.getElementById("detail-study-plan-btn");
+            if (studyBtn) studyBtn.setAttribute("data-course-name", course.name);
+
+            const scheduleBtn = document.getElementById("detail-schedule-btn");
+            if (scheduleBtn) scheduleBtn.setAttribute("data-course-name", course.name);
+
+            if (dDuration) dDuration.textContent = course.duration;
+            if (dRating) dRating.textContent = course.rating;
+            if (dStudents) dStudents.textContent = course.students;
+
+            // Hide autocomplete dropdown if open
+            searchDropdown.style.display = "none";
+
+            // Show Bootstrap Modal
+            courseModal.show();
+        }
+
+        // Hide dropdown by clicking outside
+        document.addEventListener('click', function (event) {
+            if (!searchInput.contains(event.target) && !searchDropdown.contains(event.target)) {
+                searchDropdown.style.display = "none";
+            }
+        });
+
+        // Hide dropdown on Escape
+        document.addEventListener('keydown', function (event) {
+            if (event.key === "Escape") {
+                searchDropdown.style.display = "none";
+            }
+        });
+
+        searchInput.addEventListener("input", (e) => {
+            currentSearch = e.target.value.trim();
+            renderList(); // Live update main list too
+            const lowerSearch = currentSearch.toLowerCase();
+
+            // Autocomplete Logic
+            searchDropdown.innerHTML = "";
+            if (lowerSearch === "") {
+                searchDropdown.style.display = "none";
+                return;
+            }
+
+            const results = courseData.filter(c => c.name.toLowerCase().includes(lowerSearch));
+
+            if (results.length > 0) {
+                results.forEach(course => {
+                    const div = document.createElement("div");
+                    div.className = "search-dropdown-item d-flex justify-content-between align-items-center";
+
+                    // Highlight match logic
+                    const regex = new RegExp(`(${lowerSearch})`, 'gi');
+                    const highlightedName = course.name.replace(regex, '<strong>$1</strong>');
+
+                    div.innerHTML = `
+                    <span>${highlightedName}</span>
+                        <small class="text-muted">${course.category}</small>
+                `;
+                    div.onmousedown = (e) => { // mousedown fires before blur
+                        e.preventDefault();
+                        showDetail(course);
+                        searchInput.value = course.name;
+                        searchDropdown.style.display = "none";
+                    };
+                    searchDropdown.appendChild(div);
+                });
+                searchDropdown.style.display = "block";
+            } else {
+                const div = document.createElement("div");
+                div.className = "p-3 text-muted text-center bg-white";
+                div.innerHTML = `<em>No hay coincidencias</em>`;
+                searchDropdown.appendChild(div);
+                searchDropdown.style.display = "block";
+            }
+        });
+
+        searchInput.addEventListener("focus", (e) => {
+            if (searchInput.value.trim() !== "" && searchDropdown.innerHTML !== "") {
+                searchDropdown.style.display = "block";
+            }
+        });
+
+        document.addEventListener("DOMContentLoaded", () => {
+            courseModal = new bootstrap.Modal(document.getElementById('courseModal'));
+            renderCategories();
+            renderList();
+        });
+    </script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+
+</html>
