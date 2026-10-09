@@ -317,3 +317,11 @@ test('sitemap y robots publican las canonical y excluyen 404', () => {
     assert.ok(localFile(url), `Sitemap de robots inexistente: ${url.href}`);
   }
 });
+
+test('las rutas antiguas usan 301 de Netlify sin archivos HTML que colisionen con las carpetas', () => {
+  const redirects = readFileSync(path.join(dist, '_redirects'), 'utf8');
+  for (const slug of ['cursos', 'instituto', 'sedes', 'contacto', 'galeria', 'trabaja-con-nosotros', 'terminos-y-condiciones']) {
+    assert.equal(existsSync(path.join(dist, slug + '.html')), false, 'Conflicto de Pretty URLs: ' + slug);
+    assert.ok(redirects.includes('/' + slug + '.html /' + slug + '/ 301!'));
+  }
+});
