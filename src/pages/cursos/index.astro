@@ -1,0 +1,239 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CourseCard from '../../components/CourseCard.astro';
+import Icon from '../../components/Icon.astro';
+import { courses, categories } from '../../data/courses';
+import { site, whatsapp } from '../../data/site';
+import '../../styles/courses.css';
+
+const origin = new URL(Astro.site || site.url).origin;
+const schema = [
+  {
+    '@type': 'ItemList',
+    name: 'Cursos de Tu Capacitación en Santiago del Estero',
+    numberOfItems: courses.length,
+    itemListElement: courses.map((course, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: course.name,
+      url: `${origin}/cursos/${course.slug}/`,
+    })),
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${origin}/` },
+      { '@type': 'ListItem', position: 2, name: 'Cursos', item: `${origin}/cursos/` },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Cursos en Santiago del Estero | Tu Capacitación"
+  description="Explorá 20 cursos de administración, técnica, informática, belleza y salud. Conocé sus contenidos y consultá modalidades, horarios y aranceles."
+  schema={schema}
+>
+  <section class="catalog-intro">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">Cursos</span>
+      </nav>
+      <div class="catalog-intro-grid">
+        <div>
+          <span class="eyebrow">HAY ALGO NUEVO ESPERÁNDOTE</span>
+          <h1>
+            Tu próximo paso
+            <br />
+            empieza <span class="serif">acá.</span>
+          </h1>
+        </div>
+        <div class="catalog-intro-note">
+          <span class="catalog-count">
+            {courses.length}
+            <Icon name="spark" size={30} />
+          </span>
+          <p>
+            Cursos para descubrir lo que te gusta
+            <br />y aprender a hacerlo.
+          </p>
+          <span class="catalog-areas">{categories.length} áreas. Muchas posibilidades.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="catalog-results" aria-labelledby="catalog-title">
+    <div class="container">
+      <h2 id="catalog-title" class="sr-only">
+        Explorá todos nuestros cursos
+      </h2>
+      <form
+        id="course-filters"
+        class="course-filters"
+        role="search"
+        aria-label="Buscar cursos"
+        hidden
+      >
+        <div class="course-search-field">
+          <label for="course-search">Buscá tu próximo curso</label>
+          <div class="course-search-input">
+            <Icon name="search" size={21} />
+            <input
+              id="course-search"
+              name="q"
+              type="search"
+              placeholder="Por ejemplo: programación"
+              autocomplete="off"
+              aria-controls="course-results"
+            />
+          </div>
+        </div>
+        <div class="course-area-field">
+          <label for="course-area">Área de formación</label>
+          <select id="course-area" name="area" aria-controls="course-results">
+            <option value="">Todas las áreas</option>
+            {categories.map((category) => (
+              <option value={category}>{category}</option>
+            ))}
+          </select>
+        </div>
+        <button type="reset" class="course-filter-reset">
+          Limpiar filtros <Icon name="close" size={15} />
+        </button>
+      </form>
+      <div class="catalog-results-heading">
+        <p id="course-result-count" role="status" aria-live="polite" aria-atomic="true">
+          <strong>{courses.length} cursos</strong> para elegir
+        </p>
+        <span>
+          <Icon name="heart" size={15} /> Guardá los que te interesan
+        </span>
+      </div>
+      <noscript>
+        <p class="catalog-noscript">
+          Explorá todos los cursos a continuación. En cada ficha podés conocer sus contenidos y
+          consultar por WhatsApp.
+        </p>
+      </noscript>
+      <div class="course-grid" id="course-results">
+        {courses.map((course) => (
+          <CourseCard course={course} />
+        ))}
+      </div>
+      <div id="course-empty" class="course-empty" hidden>
+        <span class="empty-search-icon">
+          <Icon name="search" size={30} />
+        </span>
+        <h2>Probemos por otro camino.</h2>
+        <p>
+          No encontramos cursos con esos filtros. Buscá con otra palabra o explorá todas las áreas.
+        </p>
+        <button type="button" id="course-empty-reset" class="button button-dark">
+          Ver todos los cursos <Icon name="arrow" size={18} />
+        </button>
+      </div>
+      <aside class="catalog-help">
+        <div>
+          <span class="eyebrow">ESTAMOS PARA ORIENTARTE</span>
+          <h2>
+            ¿Todavía no sabés <span class="serif">cuál elegir?</span>
+          </h2>
+          <p>Contanos qué te interesa y te ayudamos a conocer las opciones.</p>
+        </div>
+        <a
+          href={whatsapp('Hola, estoy explorando los cursos y quisiera orientación para elegir.')}
+          class="button button-dark"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-lead="catalog_guidance"
+        >
+          Conversemos <Icon name="diagonal" size={18} />
+        </a>
+      </aside>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  const filterForm = document.querySelector<HTMLFormElement>('#course-filters');
+  const searchInput = document.querySelector<HTMLInputElement>('#course-search');
+  const areaSelect = document.querySelector<HTMLSelectElement>('#course-area');
+  const count = document.querySelector<HTMLElement>('#course-result-count');
+  const empty = document.querySelector<HTMLElement>('#course-empty');
+  const emptyReset = document.querySelector<HTMLButtonElement>('#course-empty-reset');
+  const cards = [...document.querySelectorAll<HTMLElement>('#course-results [data-course-card]')];
+
+  if (filterForm && searchInput && areaSelect && count && empty) {
+    const normalize = (value: string) =>
+      value
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLocaleLowerCase('es')
+        .trim();
+    const records = cards.map((card) => ({
+      card,
+      text: normalize(`${card.dataset.name || ''} ${card.querySelector('p')?.textContent || ''}`),
+      area: normalize(card.dataset.category || ''),
+    }));
+
+    const applyFilters = (updateUrl = true) => {
+      const query = normalize(searchInput.value);
+      const area = normalize(areaSelect.value);
+      let visible = 0;
+      for (const record of records) {
+        const matches = (!query || record.text.includes(query)) && (!area || record.area === area);
+        record.card.hidden = !matches;
+        if (matches) visible += 1;
+      }
+      count.textContent =
+        query || area
+          ? `${visible} ${visible === 1 ? 'curso encontrado' : 'cursos encontrados'} de ${cards.length}`
+          : `${cards.length} cursos para elegir`;
+      empty.hidden = visible !== 0;
+      if (updateUrl) {
+        const url = new URL(window.location.href);
+        const rawQuery = searchInput.value.trim();
+        if (rawQuery) url.searchParams.set('q', rawQuery);
+        else url.searchParams.delete('q');
+        if (areaSelect.value) url.searchParams.set('area', areaSelect.value);
+        else url.searchParams.delete('area');
+        window.history.replaceState(window.history.state, '', url);
+      }
+    };
+
+    const readUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      searchInput.value = params.get('q') || '';
+      const requestedArea = normalize(params.get('area') || '');
+      areaSelect.value =
+        [...areaSelect.options].find((option) => normalize(option.value) === requestedArea)
+          ?.value || '';
+      applyFilters(false);
+    };
+
+    const resetFilters = () => {
+      searchInput.value = '';
+      areaSelect.value = '';
+      applyFilters();
+      searchInput.focus();
+    };
+
+    filterForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      applyFilters();
+    });
+    filterForm.addEventListener('reset', (event) => {
+      event.preventDefault();
+      resetFilters();
+    });
+    searchInput.addEventListener('input', () => applyFilters());
+    areaSelect.addEventListener('change', () => applyFilters());
+    emptyReset?.addEventListener('click', resetFilters);
+    window.addEventListener('popstate', readUrl);
+    readUrl();
+    filterForm.hidden = false;
+  }
+</script>

@@ -1,0 +1,188 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site, whatsapp } from '../data/site';
+import '../styles/secondary.css';
+---
+
+<BaseLayout
+  title="Trabajá con nosotros | Tu Capacitación"
+  description="Compartí tu experiencia y presentate al equipo de Tu Capacitación, instituto de formación laboral en Santiago del Estero. Prepará tu postulación por WhatsApp."
+>
+  <section class="secondary-hero">
+    <div class="container">
+      <nav class="secondary-breadcrumb" aria-label="Ruta de navegación">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span>Trabajá con nosotros</span>
+      </nav>
+      <p class="eyebrow">SUMÁ TU TALENTO</p>
+      <h1>
+        Lo que sabés
+        <br />
+        puede <em>abrir caminos.</em>
+      </h1>
+      <p class="secondary-lead">
+        Si te entusiasma compartir conocimientos y acompañar a otros a crecer, queremos conocerte.
+      </p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container secondary-split">
+      <div class="secondary-copy">
+        <p class="eyebrow">TRABAJÁ CON NOSOTROS</p>
+        <h2>
+          Tu experiencia
+          <br />
+          también enseña.
+        </h2>
+        <p>
+          Contanos en qué área te gustaría participar y cuál es tu recorrido. Tu presentación será
+          el primer paso para conversar con el equipo de Tu Capacitación.
+        </p>
+        <ol class="work-steps">
+          <li>
+            <div>
+              <strong>Presentate</strong>
+              <p>
+                Compartí tu nombre, el puesto de interés y una breve descripción de tu experiencia.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Revisá tu mensaje</strong>
+              <p>
+                El formulario prepara tu presentación y abre WhatsApp para que puedas revisarla.
+              </p>
+            </div>
+          </li>
+          <li>
+            <div>
+              <strong>Compartí tu CV</strong>
+              <p>
+                Después de enviar el mensaje, podés adjuntar tu currículum en la conversación de
+                WhatsApp.
+              </p>
+            </div>
+          </li>
+        </ol>
+        <p class="secondary-note">
+          Este espacio recibe presentaciones espontáneas. La disponibilidad de puestos se consulta
+          con el equipo.
+        </p>
+      </div>
+      <div class="secondary-panel">
+        <h2>Nos gustaría conocerte.</h2>
+        <p>Prepará tu presentación en unos minutos.</p>
+        <form id="jobForm" class="secondary-form" data-whatsapp-phone={site.phone}>
+          <div class="secondary-field">
+            <label for="job-name">Nombre completo *</label>
+            <input
+              id="job-name"
+              name="name"
+              autocomplete="name"
+              required
+              minlength="2"
+              maxlength="100"
+              placeholder="Tu nombre y apellido"
+            />
+          </div>
+          <div class="secondary-field">
+            <label for="job-role">Puesto o área de interés *</label>
+            <input
+              id="job-role"
+              name="role"
+              required
+              minlength="3"
+              maxlength="150"
+              placeholder="Ej. Docente de Informática"
+            />
+          </div>
+          <div class="secondary-field">
+            <label for="job-message">Breve presentación *</label>
+            <textarea
+              id="job-message"
+              name="message"
+              rows="6"
+              required
+              minlength="10"
+              maxlength="2500"
+              placeholder="Contanos sobre tu formación y experiencia..."
+            ></textarea>
+          </div>
+          <p class="secondary-note">
+            * Campos obligatorios. Abriremos WhatsApp con tu presentación. Revisá el mensaje y
+            envialo allí para completar la postulación.
+          </p>
+          <button class="button button-primary" type="submit" id="job-submit" disabled>
+            Preparar mi postulación <span aria-hidden="true">↗</span>
+          </button>
+          <noscript>
+            <p class="secondary-note">
+              Para usar el formulario activá JavaScript, o{' '}
+              <a
+                href={whatsapp(
+                  'Hola, me gustaría presentar mi postulación para trabajar en Tu Capacitación.',
+                )}
+              >
+                presentate directamente por WhatsApp
+              </a>
+              .
+            </p>
+          </noscript>
+          <div class="secondary-form-status" id="job-status" role="status" hidden>
+            <p>
+              Tu presentación está preparada. Revisala y enviala en WhatsApp. Luego podés adjuntar
+              tu CV.
+            </p>
+            <a
+              id="job-fallback"
+              href={whatsapp(
+                'Hola, me gustaría presentar mi postulación para trabajar en Tu Capacitación.',
+              )}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Abrir mi presentación en WhatsApp ↗
+            </a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+<script>
+  const form = document.querySelector<HTMLFormElement>('#jobForm');
+  const submit = document.querySelector<HTMLButtonElement>('#job-submit');
+  if (form && submit) {
+    submit.disabled = false;
+    form.addEventListener('input', (event) => {
+      const field = event.target;
+      if (field instanceof HTMLInputElement || field instanceof HTMLTextAreaElement)
+        field.setCustomValidity('');
+    });
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      for (const field of form.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
+        'input, textarea',
+      )) {
+        if (!field.value.trim()) {
+          field.setCustomValidity('Completá este campo.');
+          field.reportValidity();
+          return;
+        }
+      }
+      if (!form.reportValidity()) return;
+      const data = new FormData(form);
+      const value = (name: string) => String(data.get(name) || '').trim();
+      const message = `Hola, me gustaría trabajar en Tu Capacitación.\nNombre: ${value('name')}\nPuesto o área: ${value('role')}\n\nPresentación: ${value('message')}`;
+      const phone = (form.dataset.whatsappPhone || '').replace(/\D/g, '');
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      const fallback = document.querySelector<HTMLAnchorElement>('#job-fallback');
+      const status = document.querySelector<HTMLElement>('#job-status');
+      if (fallback) fallback.href = url;
+      if (status) status.hidden = false;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
+  }
+</script>

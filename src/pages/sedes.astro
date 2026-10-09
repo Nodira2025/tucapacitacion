@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site, whatsapp } from '../data/site';
+import '../styles/secondary.css';
+
+const mapUrl =
+  'https://www.google.com/maps/search/?api=1&query=25+de+Mayo+54+Santiago+del+Estero+Argentina';
+const mapEmbed =
+  'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3529.566355419!2d-64.2588147!3d-27.790934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x943b52125f448e89%3A0xe67f5666f7f3f380!2sCalle%2025%20de%20Mayo%2054%2C%20G4200%20Santiago%20del%20Estero!5e0!3m2!1ses-419!2sar!4v1709121000000!5m2!1ses-419!2sar';
+const uberUrl =
+  'https://ul.uber.com/?action=setPickup&dropoff[latitude]=-27.790934&dropoff[longitude]=-64.2588147&dropoff[nickname]=Tu%20Capacitaci%C3%B3n';
+---
+
+<BaseLayout
+  title="Sede en Santiago del Estero | Tu Capacitación"
+  description="Encontrá Tu Capacitación en 25 de Mayo 54, Santiago del Estero Capital. Consultá la sede de tu curso, cómo llegar y las modalidades de cursado."
+>
+  <section class="secondary-hero">
+    <div class="container">
+      <nav class="secondary-breadcrumb" aria-label="Ruta de navegación">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span>Sedes</span>
+      </nav>
+      <p class="eyebrow">NOS ENCONTRAMOS ACÁ</p>
+      <h1>
+        Un lugar para aprender.
+        <br />
+        <em>Cerca de vos.</em>
+      </h1>
+      <p class="secondary-lead">
+        Estamos en Santiago del Estero. Acercate para conocer la propuesta y dar tu próximo paso.
+      </p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="secondary-split">
+        <div class="location-details">
+          <span class="location-tag">SANTIAGO DEL ESTERO CAPITAL</span>
+          <h2>{site.address}</h2>
+          <address>
+            Tu Capacitación
+            <br />
+            {site.city}, Argentina
+          </address>
+          <div class="secondary-actions">
+            <a
+              class="button button-primary"
+              href={mapUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Cómo llegar <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+          <dl class="secondary-detail-list">
+            <div>
+              <dt>Coordiná tu visita</dt>
+              <dd>
+                <a
+                  href={whatsapp(
+                    'Hola, quiero visitar la sede de 25 de Mayo 54. ¿Cuáles son los horarios de atención?',
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {site.phoneDisplay} <span aria-hidden="true">↗</span>
+                </a>
+              </dd>
+            </div>
+          </dl>
+          <p class="secondary-note">
+            Consultá los horarios de atención y la sede disponible para tu curso antes de acercarte.
+          </p>
+        </div>
+        <div class="location-map">
+          <iframe
+            title="Ubicación de Tu Capacitación en 25 de Mayo 54, Santiago del Estero"
+            src={mapEmbed}
+            width="640"
+            height="460"
+            loading="lazy"
+            allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+      <div class="location-transport">
+        <div class="secondary-panel">
+          <h3>¿Venís en colectivo?</h3>
+          <p>Estas son las líneas de referencia informadas para llegar a la zona de la sede:</p>
+          <ul class="location-lines" aria-label="Líneas de colectivo">
+            {['110', '112', '114', '116', '118', '119', '120'].map((line) => (
+              <li>Línea {line}</li>
+            ))}
+          </ul>
+          <p class="secondary-note">
+            Confirmá el recorrido y la parada de tu línea antes de viajar.
+          </p>
+        </div>
+        <div class="secondary-panel">
+          <h3>Tu destino, listo.</h3>
+          <p>
+            También podés abrir Uber con la dirección de la sede precargada y revisar tu viaje en la
+            aplicación.
+          </p>
+          <a class="text-link" href={uberUrl} target="_blank" rel="noopener noreferrer">
+            Abrir destino en Uber <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <section class="secondary-bottom">
+      <div>
+        <h2>También podés aprender a distancia.</h2>
+        <p>Conocé las modalidades disponibles.</p>
+      </div>
+      <a class="button button-secondary" href="/instituto/#modalidades-title">
+        Explorar modalidades <span aria-hidden="true">→</span>
+      </a>
+    </section>
+  </div>
+</BaseLayout>

@@ -1,0 +1,238 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CourseCard from '../../components/CourseCard.astro';
+import Icon from '../../components/Icon.astro';
+import { areaUrl } from '../../data/areas';
+import { courses, type Course } from '../../data/courses';
+import { site, whatsapp } from '../../data/site';
+import '../../styles/courses.css';
+
+export function getStaticPaths() {
+  return courses.map((course) => ({ params: { slug: course.slug }, props: { course } }));
+}
+
+interface Props {
+  course: Course;
+}
+const { course } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>('../../assets/img/cursos/*.png', {
+  eager: true,
+});
+const photo = images[`../../assets/img/cursos/${course.image}`].default;
+const relatedCourses = courses
+  .filter((candidate) => candidate.category === course.category && candidate.slug !== course.slug)
+  .slice(0, 3);
+const origin = new URL(Astro.site || site.url).origin;
+const url = `${origin}/cursos/${course.slug}/`;
+const schema = [
+  {
+    '@type': 'Course',
+    '@id': `${url}#course`,
+    name: course.name,
+    description: course.description,
+    url,
+    inLanguage: 'es-AR',
+    provider: { '@id': `${origin}/#organization` },
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${origin}/` },
+      { '@type': 'ListItem', position: 2, name: 'Cursos', item: `${origin}/cursos/` },
+      { '@type': 'ListItem', position: 3, name: course.name, item: url },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={`Curso de ${course.name} en Santiago del Estero | Tu Capacitación`}
+  description={`${course.description} Consultá modalidad, programa y aranceles en Tu Capacitación.`}
+  schema={schema}
+>
+  <section class="course-detail-intro">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <a href="/cursos/">Cursos</a>
+        <span aria-hidden="true">/</span>
+        <span aria-current="page">{course.name}</span>
+      </nav>
+      <a class="eyebrow course-area-link" href={areaUrl(course.category)}>
+        ÁREA {course.category.toLocaleUpperCase('es-AR')} <Icon name="diagonal" size={13} />
+      </a>
+      <div class="course-detail-heading">
+        <h1>{course.name}</h1>
+        <p>{course.description}</p>
+      </div>
+      <div class="course-detail-visual">
+        <div class="course-detail-photo">
+          <Image
+            src={photo}
+            alt={`Imagen ilustrativa del curso ${course.name}`}
+            widths={[480, 768, 1024, 1280]}
+            sizes="(max-width: 800px) 90vw, 57vw"
+            width={1024}
+            height={790}
+            format="webp"
+            loading="eager"
+            fetchpriority="high"
+          />
+          <span class="course-photo-caption">APRENDER. PRACTICAR. CRECER.</span>
+          <span class="course-image-note">Imagen ilustrativa</span>
+        </div>
+        <aside class="course-inquiry-panel" aria-labelledby="inquiry-title">
+          <span class="eyebrow">UNA NUEVA POSIBILIDAD</span>
+          <div class="course-panel-icon">
+            <Icon name="spark" size={37} />
+          </div>
+          <h2 id="inquiry-title">
+            Lo que viene
+            <br />
+            empieza <span class="serif">con vos.</span>
+          </h2>
+          <p>
+            Conocé la propuesta, resolvé tus dudas y elegí tu próximo paso con toda la información.
+          </p>
+          <a
+            href={whatsapp(`Hola, quiero información sobre el curso ${course.name}.`)}
+            class="button button-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-lead="course_inquiry"
+            data-course={course.slug}
+          >
+            Consultar este curso <Icon name="diagonal" size={19} />
+          </a>
+          <a
+            href={whatsapp(
+              `Hola, quisiera conocer los aranceles vigentes y qué incluyen para el curso ${course.name}.`,
+            )}
+            class="course-panel-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-lead="course_fees"
+            data-course={course.slug}
+          >
+            Consultar aranceles <Icon name="arrow" size={16} />
+          </a>
+          <div class="course-panel-divider"></div>
+          <button
+            class="course-save-detail"
+            data-save-course={course.slug}
+            aria-pressed="false"
+            aria-label={`Guardar ${course.name}`}
+          >
+            <Icon name="heart" size={19} />
+            <span data-save-label>Guardar este curso</span>
+          </button>
+          <small>
+            Tu consulta se abre en WhatsApp. Podés revisar el mensaje antes de enviarlo.
+          </small>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="course-before section" aria-labelledby="before-title">
+    <div class="container course-before-grid">
+      <div class="course-before-intro">
+        <span class="eyebrow">ELEGÍ CON TRANQUILIDAD</span>
+        <h2 id="before-title">
+          Antes de
+          <br />
+          <span class="serif">empezar.</span>
+        </h2>
+        <p>
+          Cada curso tiene su propia propuesta. Te ayudamos a conocer los detalles antes de
+          inscribirte.
+        </p>
+        <a class="text-link" href="/terminos-y-condiciones/">
+          Ver términos y condiciones <Icon name="diagonal" size={17} />
+        </a>
+      </div>
+      <div class="course-before-content">
+        <table class="course-info-table">
+          <caption class="sr-only">
+            Información a consultar antes de inscribirse en{course.name}
+          </caption>
+          <tbody>
+            <tr>
+              <th scope="row">Modalidad</th>
+              <td>Consultá qué opciones de cursado están disponibles para este curso.</td>
+            </tr>
+            <tr>
+              <th scope="row">Duración e inicio</th>
+              <td>Solicitá la duración y la fecha de la próxima comisión.</td>
+            </tr>
+            <tr>
+              <th scope="row">Días y horarios</th>
+              <td>Conocé los turnos disponibles para organizar tu cursado.</td>
+            </tr>
+            <tr>
+              <th scope="row">Requisitos</th>
+              <td>
+                Consultá la documentación, los conocimientos previos y los materiales que necesitás.
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">Certificación</th>
+              <td>Consultá quién la emite, su alcance, los requisitos y su costo.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="course-information-actions">
+          <a
+            href={whatsapp(`Hola, solicito el programa de estudios del curso ${course.name}.`)}
+            class="button button-secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-lead="course_program"
+            data-course={course.slug}
+          >
+            <Icon name="book" size={18} /> Solicitar programa
+          </a>
+          <a
+            href={whatsapp(
+              `Hola, ¿qué días y horarios hay disponibles para el curso ${course.name}?`,
+            )}
+            class="button button-secondary"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-lead="course_schedule"
+            data-course={course.slug}
+          >
+            <Icon name="clock" size={18} /> Consultar horarios
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {relatedCourses.length > 0 && (
+    <section class="course-related section" aria-labelledby="related-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <span class="eyebrow">SEGUÍ DESCUBRIENDO</span>
+            <h2 id="related-title">
+              Más caminos en{' '}
+              <span class="serif">{course.category.toLocaleLowerCase('es-AR')}.</span>
+            </h2>
+          </div>
+          <a class="text-link" href={areaUrl(course.category)}>
+            Explorar el área <Icon name="arrow" size={17} />
+          </a>
+        </div>
+        <div class="course-grid course-related-grid">
+          {relatedCourses.map((related) => (
+            <CourseCard course={related} />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+</BaseLayout>

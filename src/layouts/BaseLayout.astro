@@ -1,0 +1,283 @@
+---
+import { Image } from 'astro:assets';
+import '@fontsource-variable/manrope';
+import '../styles/global.css';
+import logo from '../assets/img/logo.png';
+import Icon from '../components/Icon.astro';
+import CampusAccess from '../components/CampusAccess.astro';
+import { site, whatsapp } from '../data/site';
+import { courses } from '../data/courses';
+interface Props {
+  title: string;
+  description: string;
+  schema?: Record<string, unknown>[];
+  noindex?: boolean;
+  image?: string;
+}
+const {
+  title,
+  description,
+  schema = [],
+  noindex = false,
+  image = '/social-card.png',
+} = Astro.props;
+const canonicalPath = Astro.url.pathname === '/404/' ? '/404.html' : Astro.url.pathname;
+const canonical = new URL(canonicalPath, Astro.site || site.url).href;
+const origin = new URL(Astro.site || site.url).origin;
+const current = Astro.url.pathname;
+const organization = {
+  '@type': 'EducationalOrganization',
+  '@id': `${origin}/#organization`,
+  name: site.name,
+  url: `${origin}/`,
+  logo: `${origin}/logo.png`,
+  telephone: `+${site.phone}`,
+  email: site.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.address,
+    addressLocality: site.city,
+    addressRegion: 'Santiago del Estero',
+    addressCountry: 'AR',
+    postalCode: 'G4200',
+  },
+  sameAs: [site.instagram, site.facebook, site.tiktok, site.youtube],
+};
+const json = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    organization,
+    {
+      '@type': 'WebSite',
+      '@id': `${origin}/#website`,
+      url: `${origin}/`,
+      name: site.name,
+      inLanguage: 'es-AR',
+      publisher: { '@id': `${origin}/#organization` },
+    },
+    ...schema,
+  ],
+}).replace(/</g, '\\u003c');
+const courseIndex = JSON.stringify(courses.map(({ slug, name }) => ({ slug, name }))).replace(
+  /</g,
+  '\\u003c',
+);
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#002898" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'}
+    />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_AR" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(image, origin).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Tu Capacitación. Aprendé hoy, abrí nuevas posibilidades."
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(image, origin).href} />
+    <script type="application/ld+json" set:html={json} />
+  </head>
+  <body class:list={{ 'home-brand': current === '/' }}>
+    <a href="#contenido" class="skip-link">
+      Saltar al contenido
+    </a>
+    <CampusAccess />
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="/" class="brand" aria-label="Tu Capacitación, inicio">
+          <Image
+            src={logo}
+            alt="Tu Capacitación — Formación con salida laboral"
+            width={228}
+            height={74}
+            format="webp"
+            loading="eager"
+          />
+        </a>
+        <nav aria-label="Navegación principal" class="desktop-nav">
+          <a href="/cursos/" aria-current={current.startsWith('/cursos') ? 'page' : undefined}>
+            Nuestros cursos
+          </a>
+          <a href="/instituto/" aria-current={current === '/instituto/' ? 'page' : undefined}>
+            El instituto
+          </a>
+          <a href="/#modalidades">Cómo estudiar</a>
+          <a href="/sedes/" aria-current={current === '/sedes/' ? 'page' : undefined}>
+            Nuestra sede
+          </a>
+        </nav>
+        <div class="header-actions">
+          <button class="saved-trigger" data-open-saved aria-label="Ver mis cursos guardados">
+            <Icon name="heart" />
+            <span data-saved-count>0</span>
+          </button>
+          <a
+            href={whatsapp('Hola, quiero información sobre los cursos de Tu Capacitación.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-lead="header"
+            class="button button-small button-dark"
+          >
+            Hablemos <Icon name="diagonal" size={17} />
+          </a>
+        </div>
+        <details class="mobile-menu">
+          <summary aria-label="Abrir menú de navegación">
+            <Icon name="menu" />
+          </summary>
+          <nav aria-label="Navegación móvil">
+            <a href="/cursos/">Nuestros cursos</a>
+            <a href="/instituto/">El instituto</a>
+            <a href="/#modalidades">Cómo estudiar</a>
+            <a href="/sedes/">Nuestra sede</a>
+            <a href="/contacto/">Contacto</a>
+            <a href="/#preguntas-frecuentes">Preguntas frecuentes</a>
+          </nav>
+        </details>
+      </div>
+    </header>
+    <main id="contenido">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="/" aria-label="Tu Capacitación, inicio">
+              <Image
+                src={logo}
+                alt="Tu Capacitación"
+                width={228}
+                height={74}
+                format="webp"
+                loading="lazy"
+              />
+            </a>
+            <p>
+              Aprender algo nuevo.
+              <br />
+              Cambiar lo que viene.
+            </p>
+            <span>Santiago del Estero, Argentina</span>
+          </div>
+          <div>
+            <h2>Tu próximo paso</h2>
+            <a href="/cursos/">Explorá los cursos</a>
+            <a href="/instituto/">Conocé el instituto</a>
+            <a href="/galeria/">Áreas de formación</a>
+            <a href="/trabaja-con-nosotros/">Trabajá con nosotros</a>
+          </div>
+          <div>
+            <h2>Estamos cerca</h2>
+            <a href="/sedes/">
+              {site.address}, {site.city}
+            </a>
+            <a
+              href={whatsapp('Hola, tengo una consulta.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-lead="footer"
+            >
+              {site.phoneDisplay}
+            </a>
+            <a href={`mailto:${site.email}`}>{site.email}</a>
+            <a href="/contacto/">
+              Contactanos <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© {new Date().getFullYear()} Tu Capacitación.</span>
+          <div>
+            <a href={site.instagram} target="_blank" rel="noopener noreferrer">
+              Instagram ↗
+            </a>
+            <a href={site.facebook} target="_blank" rel="noopener noreferrer">
+              Facebook ↗
+            </a>
+            <a href={site.tiktok} target="_blank" rel="noopener noreferrer">
+              TikTok ↗
+            </a>
+            <a href={site.youtube} target="_blank" rel="noopener noreferrer">
+              YouTube ↗
+            </a>
+          </div>
+          <div>
+            <a href="/terminos-y-condiciones/">Términos y condiciones</a>
+            <a href={site.employeePortal} target="_blank" rel="noopener noreferrer">
+              Portal empleados ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <a
+      class="floating-contact"
+      href={whatsapp('Hola, ¿me ayudan a elegir un curso?')}
+      target="_blank"
+      rel="noopener noreferrer"
+      data-lead="floating"
+      aria-label="¿Te ayudamos? Consultar por WhatsApp"
+    >
+      <Icon name="chat" size={24} />
+      <span>¿Te ayudamos?</span>
+    </a>
+    <dialog id="saved-dialog" aria-labelledby="saved-title">
+      <div class="dialog-heading">
+        <div>
+          <span class="eyebrow">TU PRÓXIMO PASO</span>
+          <h2 id="saved-title">Tus cursos guardados</h2>
+        </div>
+        <button class="icon-button" data-close-saved aria-label="Cerrar cursos guardados">
+          <Icon name="close" />
+        </button>
+      </div>
+      <p>Reuní los cursos que te interesan y consultalos en un solo mensaje.</p>
+      <ul id="saved-list"></ul>
+      <p id="saved-empty">Todavía no guardaste cursos. Tocá el corazón de un curso para sumarlo.</p>
+      <a
+        id="saved-inquiry"
+        class="button button-primary"
+        href={whatsapp('Hola, quiero consultar por cursos.')}
+        target="_blank"
+        rel="noopener noreferrer"
+        data-lead="saved_courses"
+      >
+        Consultar por WhatsApp <Icon name="arrow" />
+      </a>
+      <small>
+        Podés revisar el mensaje en WhatsApp antes de enviarlo. Guardar un curso no confirma una
+        inscripción.
+      </small>
+      <p id="storage-notice" hidden>
+        Tu navegador no permite guardar la selección entre visitas. Podés usarla durante esta
+        visita.
+      </p>
+    </dialog>
+    <div id="site-status" class="sr-only" role="status" aria-live="polite"></div>
+    <script type="application/json" id="course-index" set:html={courseIndex} />
+    <script>
+      import '../scripts/site';
+    </script>
+  </body>
+</html>

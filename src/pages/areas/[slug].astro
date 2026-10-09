@@ -1,0 +1,147 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import CourseCard from '../../components/CourseCard.astro';
+import Icon from '../../components/Icon.astro';
+import { areas } from '../../data/areas';
+import { courses } from '../../data/courses';
+import { site, whatsapp } from '../../data/site';
+import '../../styles/courses.css';
+export function getStaticPaths() {
+  return areas.map((area) => ({ params: { slug: area.slug }, props: { area } }));
+}
+interface Props {
+  area: (typeof areas)[number];
+}
+const { area } = Astro.props;
+const selected = courses.filter((course) => course.category === area.category);
+const origin = new URL(Astro.site || site.url).origin;
+const url = `${origin}/areas/${area.slug}/`;
+const schema = [
+  {
+    '@type': 'CollectionPage',
+    '@id': `${url}#collection`,
+    name: `Cursos de ${area.name}`,
+    description: area.description,
+    url,
+    inLanguage: 'es-AR',
+    mainEntity: {
+      '@type': 'ItemList',
+      numberOfItems: selected.length,
+      itemListElement: selected.map((course, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: course.name,
+        url: `${origin}/cursos/${course.slug}/`,
+      })),
+    },
+  },
+  {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Inicio', item: `${origin}/` },
+      { '@type': 'ListItem', position: 2, name: 'Cursos', item: `${origin}/cursos/` },
+      { '@type': 'ListItem', position: 3, name: area.name, item: url },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={`Cursos de ${area.name} en Santiago del Estero | Tu Capacitación`}
+  description={area.description}
+  schema={schema}
+>
+  <section class="catalog-intro">
+    <div class="container">
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <a href="/">Inicio</a>
+        <span>/</span>
+        <a href="/cursos/">Cursos</a>
+        <span>/</span>
+        <span aria-current="page">{area.name}</span>
+      </nav>
+      <span class="eyebrow">FORMACIÓN PROFESIONAL EN SANTIAGO DEL ESTERO</span>
+      <h1>Cursos de {area.name}</h1>
+      <p class="area-intro">{area.intro}</p>
+      <a
+        class="text-link"
+        href={whatsapp(`Hola, quisiera información sobre los cursos del área ${area.name}.`)}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Consultá por esta área <Icon name="arrow" size={18} />
+      </a>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2>Explorá los {selected.length} cursos del área</h2>
+      <div class="course-grid">
+        {selected.map((course) => (
+          <CourseCard course={course} />
+        ))}
+      </div>
+    </div>
+  </section>
+  <section class="section area-guide">
+    <div class="container">
+      <h2>¿Qué podés aprender?</h2>
+      <p>{area.skills}</p>
+      <h2>Cómo elegir tu curso</h2>
+      <p>
+        Consultá el programa, los requisitos de ingreso, los materiales, las próximas fechas, los
+        horarios y los aranceles. La modalidad presencial, en vivo o a distancia depende de cada
+        propuesta.
+      </p>
+      <p>
+        Encontranos en {site.address}, {site.city}, o <a href="/contacto/">contactá al equipo</a>{' '}
+        para conocer las opciones disponibles. La información sobre duración, certificación y
+        alcance se confirma antes de inscribirte.
+      </p>
+      <h2>Otras áreas de formación</h2>
+      <nav aria-label="Otras áreas" class="area-other">
+        {areas
+          .filter((item) => item.slug !== area.slug)
+          .map((item) => (
+            <a href={`/areas/${item.slug}/`}>
+              {item.name}
+              <Icon name="arrow" size={16} />
+            </a>
+          ))}
+      </nav>
+    </div>
+  </section>
+</BaseLayout>
+<style>
+  .catalog-intro h1 {
+    font-size: clamp(36px, 5vw, 64px);
+    margin: 20px 0;
+  }
+  .area-intro {
+    max-width: 850px;
+  }
+  .area-guide {
+    background: #f0f3fa;
+  }
+  .area-guide .container > p {
+    max-width: 850px;
+  }
+  .area-guide h2 {
+    font-size: 28px;
+    margin-top: 32px;
+  }
+  .area-guide a {
+    text-decoration: underline;
+  }
+  .area-other {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+  }
+  .area-other a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+  }
+</style>

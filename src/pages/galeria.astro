@@ -1,0 +1,183 @@
+---
+import { Image, getImage } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+import '../styles/secondary.css';
+import health from '../assets/img/cursos/aux_farmacia.png';
+import beauty from '../assets/img/cursos/peluqueria.png';
+import technical from '../assets/img/cursos/electricidad.png';
+import computers from '../assets/img/cursos/programacion.png';
+import administration from '../assets/img/cursos/secretariado.png';
+import pets from '../assets/img/cursos/aux_veterinaria.png';
+
+const photos = [
+  { image: health, name: 'Formación en salud', alt: 'Imagen ilustrativa del área de farmacia' },
+  {
+    image: beauty,
+    name: 'Belleza y cuidado personal',
+    alt: 'Imagen ilustrativa del área de peluquería',
+  },
+  {
+    image: technical,
+    name: 'Oficios y habilidades técnicas',
+    alt: 'Imagen ilustrativa del área de electricidad',
+  },
+  {
+    image: computers,
+    name: 'Informática y tecnología',
+    alt: 'Imagen ilustrativa del área de programación',
+  },
+  {
+    image: administration,
+    name: 'Administración y organización',
+    alt: 'Imagen ilustrativa del área de secretariado',
+  },
+  {
+    image: pets,
+    name: 'Cuidado animal',
+    alt: 'Imagen ilustrativa del área de auxiliar de veterinaria',
+  },
+];
+const galleryPhotos = await Promise.all(
+  photos.map(async (photo) => ({
+    ...photo,
+    enlarged: await getImage({
+      src: photo.image,
+      width: 1000,
+      height: 1000,
+      format: 'webp',
+      quality: 78,
+    }),
+  })),
+);
+---
+
+<BaseLayout
+  title="Galería de áreas de formación | Tu Capacitación"
+  description="Explorá las áreas de formación de Tu Capacitación a través de nuestra galería ilustrativa: salud, belleza, oficios, informática y administración."
+>
+  <section class="secondary-hero">
+    <div class="container">
+      <nav class="secondary-breadcrumb" aria-label="Ruta de navegación">
+        <a href="/">Inicio</a>
+        <span aria-hidden="true">/</span>
+        <span>Galería</span>
+      </nav>
+      <p class="eyebrow">UN MUNDO POR DESCUBRIR</p>
+      <h1>
+        Imaginá todo
+        <br />
+        lo que <em>podés aprender.</em>
+      </h1>
+      <p class="secondary-lead">
+        Distintos intereses. Nuevas habilidades. Un recorrido visual por nuestras áreas de
+        formación.
+      </p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="gallery-notice">
+        <span aria-hidden="true">ⓘ</span>
+        <p>
+          Las imágenes de esta galería son <strong>ilustrativas</strong> de las áreas de estudio; no
+          muestran las instalaciones, docentes ni estudiantes del instituto. Para conocer la vida de
+          Tu Capacitación, visitá{' '}
+          <a href={site.instagram} target="_blank" rel="noopener noreferrer">
+            nuestro Instagram
+          </a>
+          .
+        </p>
+      </div>
+      <div class="gallery-grid">
+        {galleryPhotos.map((photo) => (
+          <figure class="gallery-item">
+            <a
+              href={photo.enlarged.src}
+              data-gallery-image
+              data-title={photo.name}
+              aria-label={`Ampliar imagen ilustrativa: ${photo.name}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Image
+                src={photo.image}
+                alt={photo.alt}
+                widths={[360, 600, 1000]}
+                sizes="(max-width: 680px) 45vw, (max-width: 900px) 45vw, 30vw"
+                width={600}
+                height={600}
+                format="webp"
+                quality={78}
+                loading="lazy"
+              />
+            </a>
+            <figcaption>
+              <strong>{photo.name}</strong>
+              <span>Imagen ilustrativa · Ampliar ↗</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </section>
+  <div class="container">
+    <section class="secondary-bottom">
+      <div>
+        <h2>Encontrá eso que te mueve.</h2>
+        <p>Explorá los cursos y elegí tu próximo comienzo.</p>
+      </div>
+      <a class="button button-primary" href="/cursos/">
+        Ver todos los cursos <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+  </div>
+  <dialog id="gallery-dialog" class="gallery-dialog" aria-labelledby="gallery-dialog-title">
+    <div class="gallery-dialog-top">
+      <p id="gallery-dialog-title">Imagen ilustrativa</p>
+      <button class="gallery-dialog-close" id="gallery-close" type="button" autofocus>
+        Cerrar ×
+      </button>
+    </div>
+    <img id="gallery-large" width="1000" height="1000" alt="" />
+  </dialog>
+</BaseLayout>
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('#gallery-dialog');
+  const image = document.querySelector<HTMLImageElement>('#gallery-large');
+  const title = document.querySelector<HTMLElement>('#gallery-dialog-title');
+  if (dialog && image && title) {
+    document.querySelectorAll<HTMLAnchorElement>('[data-gallery-image]').forEach((link) => {
+      link.addEventListener('click', (event) => {
+        const thumbnail = link.querySelector('img');
+        if (
+          !thumbnail ||
+          !dialog.showModal ||
+          event.ctrlKey ||
+          event.metaKey ||
+          event.shiftKey ||
+          event.altKey
+        )
+          return;
+        event.preventDefault();
+        image.src = link.href;
+        image.alt = thumbnail.alt;
+        title.textContent = `${link.dataset.title} · Imagen ilustrativa`;
+        dialog.showModal();
+      });
+    });
+    document.querySelector('#gallery-close')?.addEventListener('click', () => dialog.close());
+    dialog.addEventListener('click', (event) => {
+      if (event.target === dialog) {
+        const box = dialog.getBoundingClientRect();
+        if (
+          event.clientX < box.left ||
+          event.clientX > box.right ||
+          event.clientY < box.top ||
+          event.clientY > box.bottom
+        )
+          dialog.close();
+      }
+    });
+  }
+</script>

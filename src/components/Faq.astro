@@ -1,0 +1,35 @@
+---
+import { faqs } from '../data/faqs';
+import Icon from './Icon.astro';
+---
+
+<section class="section faq-section" id="preguntas-frecuentes">
+  <div class="container faq-grid">
+    <div>
+      <span class="eyebrow">TODO UN POCO MÁS CLARO</span>
+      <h2>
+        Las grandes decisiones <br />
+        empiezan con <br />
+        <span class="serif">buenas preguntas.</span>
+      </h2>
+      <p>
+        Estamos para acompañarte. <br />Y para que elijas con toda la información.
+      </p>
+      <a class="text-link" href="/contacto/">
+        Hablemos de tus dudas <Icon name="arrow" />
+      </a>
+    </div>
+    <div class="faq-list">
+      {faqs.map((faq, i) => (
+        <details>
+          <summary>
+            <span class="faq-number">0{i + 1}</span>
+            {faq.question}
+            <Icon name="plus" />
+          </summary>
+          <p>{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

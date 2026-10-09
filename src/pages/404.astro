@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Página no encontrada | Tu Capacitación"
+  description="Encontrá tu próximo curso o volvé al inicio de Tu Capacitación."
+  noindex
+>
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">404 · UN CAMINO NUEVO</span>
+      <h1 style="font-size:clamp(36px,6vw,72px);max-width:850px">
+        Esta página no está.
+        <br />
+        Tu próximo paso, <em class="serif">sí.</em>
+      </h1>
+      <p>
+        Es posible que la dirección haya cambiado. Volvé al catálogo para encontrar el curso que te
+        interesa.
+      </p>
+      <a class="button button-primary" href="/cursos/">
+        Explorar los cursos →
+      </a>{' '}
+      <a class="button button-secondary" href="/">
+        Ir al inicio
+      </a>
+    </div>
+  </section>
+</BaseLayout>

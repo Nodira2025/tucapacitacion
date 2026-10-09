@@ -1,0 +1,487 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import CourseCard from '../components/CourseCard.astro';
+import Faq from '../components/Faq.astro';
+import { courses, featuredCourses, categories } from '../data/courses';
+import { faqs } from '../data/faqs';
+import { site, whatsapp } from '../data/site';
+import { areaUrl } from '../data/areas';
+import people from '../assets/learning-together.jpg';
+import beauty from '../assets/img/cursos/peluqueria.png';
+import health from '../assets/img/cursos/aux_farmacia.png';
+import technical from '../assets/img/cursos/electricidad.png';
+import digital from '../assets/img/cursos/programacion.png';
+import admin from '../assets/img/cursos/secretariado.png';
+import '../styles/home.css';
+const areaImages = [admin, technical, digital, beauty, health];
+const schema = [
+  {
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({
+      '@type': 'Question',
+      name: f.question,
+      acceptedAnswer: { '@type': 'Answer', text: f.answer },
+    })),
+  },
+];
+---
+
+<BaseLayout
+  title="Tu Capacitación | Formación profesional en Santiago del Estero"
+  description="Cursos de formación profesional en Santiago del Estero: salud, belleza, oficios, informática y administración. Explorá Tu Capacitación y consultá cómo empezar."
+  schema={schema}
+>
+  <div class="human-home" data-motion="running">
+    <section class="h-hero n-hero">
+      <Image
+        class="n-hero-image"
+        src={people}
+        alt="Personas aprendiendo juntas. Fotografía ilustrativa."
+        widths={[700, 1000, 1400]}
+        sizes="(max-width:760px) 100vw, 75vw"
+        format="webp"
+        loading="eager"
+        fetchpriority="high"
+      />
+      <div class="n-hero-shade" aria-hidden="true"></div>
+      <div class="container n-hero-inner">
+        <div class="n-hero-copy">
+          <span class="n-kicker" data-intro>
+            <span></span> FORMACIÓN PROFESIONAL · SANTIAGO DEL ESTERO
+          </span>
+          <h1 data-intro>
+            Aprendé un oficio.
+            <br />
+            Abrí nuevas
+            <br />
+            <span>posibilidades.</span>
+          </h1>
+          <p data-intro>
+            Cursos en salud, belleza, tecnología y administración. <br />
+            Elegí lo que te mueve. Nosotros te ayudamos a empezar.
+          </p>
+          <div class="n-hero-actions" data-intro>
+            <a href="/cursos/" class="button h-primary">
+              Explorar los cursos <Icon name="arrow" size={20} />
+            </a>
+            <a
+              href={whatsapp('Hola, me gustaría recibir orientación sobre los cursos.')}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="n-advice"
+            >
+              Quiero que me orienten <Icon name="chat" size={19} />
+            </a>
+          </div>
+          <div class="n-hero-facts">
+            <span>
+              <strong>{courses.length}</strong> cursos
+            </span>
+            <span>
+              <strong>{categories.length}</strong> áreas de formación
+            </span>
+            <a href="/sedes/">
+              <Icon name="pin" size={15} /> Conocé nuestra sede
+            </a>
+          </div>
+        </div>
+        <div class="n-image-story">
+          <span>EL CAMINO SE CONSTRUYE CON OTROS.</span>
+          <strong>
+            Tus ganas.
+            <br />
+            Un nuevo comienzo.
+          </strong>
+          <small>Fotografía ilustrativa.</small>
+        </div>
+      </div>
+      <svg class="n-arrow" viewBox="0 0 150 150" fill="none" aria-hidden="true">
+        <path
+          class="h-brand-path"
+          d="m10 118 43-43 24 24 58-58M93 41h42v42"
+          stroke="currentColor"
+          stroke-width="12"
+        />
+      </svg>
+    </section>
+    <div class="container n-discover">
+      <form
+        class="n-search"
+        action="/cursos/"
+        method="get"
+        role="search"
+        aria-label="Encontrá tu formación"
+      >
+        <div class="n-search-title">
+          <span>ENCONTRÁ TU FORMACIÓN</span>
+          <strong>¿Qué querés aprender?</strong>
+        </div>
+        <div class="n-search-field">
+          <label for="home-course-query">Buscá un curso</label>
+          <div>
+            <Icon name="search" size={19} />
+            <input
+              id="home-course-query"
+              name="q"
+              type="search"
+              placeholder="Ej. farmacia, programación..."
+            />
+          </div>
+        </div>
+        <div class="n-search-area">
+          <label for="home-course-area">Área de formación</label>
+          <select id="home-course-area" name="area">
+            <option value="">Todas las áreas</option>
+            {categories.map((category) => (
+              <option value={category}>{category}</option>
+            ))}
+          </select>
+        </div>
+        <button type="submit" class="button n-search-button">
+          Buscar curso <Icon name="arrow" size={18} />
+        </button>
+      </form>
+      <div class="n-study-strip">
+        <span>Aprendé a tu manera</span>
+        <a href="#modalidades">
+          <Icon name="people" size={19} /> Presencial
+        </a>
+        <a href="#modalidades">
+          <Icon name="laptop" size={19} /> Clases en vivo
+        </a>
+        <a href="#modalidades">
+          <Icon name="clock" size={19} /> A distancia
+        </a>
+        <small>Disponibilidad según el curso.</small>
+        <button class="b-motion" type="button" aria-pressed="false" hidden>
+          Ⅱ Pausar animaciones
+        </button>
+      </div>
+    </div>
+    <section class="h-courses" id="explora">
+      <div class="container">
+        <div class="h-section-head" data-reveal>
+          <div>
+            <span class="h-eyebrow">ENCONTRÁ TU PRÓXIMO CURSO</span>
+            <h2>
+              De tus ganas
+              <br />
+              <span>a una nueva habilidad.</span>
+            </h2>
+          </div>
+          <div>
+            <p>
+              Quizás ya lo tenés claro. Quizás todavía estás buscando.
+              <br />
+              Hay un buen lugar para empezar a descubrirlo.
+            </p>
+            <a class="h-link" href="/cursos/">
+              Explorá los {courses.length} cursos <Icon name="arrow" size={18} />
+            </a>
+          </div>
+        </div>
+        <nav class="h-areas" aria-label="Explorar cursos por área">
+          {categories.map((category, i) => (
+            <a href={areaUrl(category)}>
+              <Icon name={['bag', 'spark', 'laptop', 'people', 'heart'][i]} size={19} />
+              {category}
+              <Icon name="diagonal" size={15} />
+            </a>
+          ))}
+        </nav>
+        <div class="course-grid" data-reveal>
+          {featuredCourses.map((course) => (
+            <CourseCard course={course} />
+          ))}
+        </div>
+        <div class="h-course-help">
+          <Icon name="heart" size={18} />
+          <span>¿Te gusta más de uno? Guardalos y elegí con calma.</span>
+          <a href="/cursos/">
+            Ver todos los cursos <Icon name="arrow" size={16} />
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="n-area-section" id="areas">
+      <div class="container">
+        <div class="h-section-head" data-reveal>
+          <div>
+            <span class="h-eyebrow">TODA LA OFERTA, EN UN SOLO LUGAR</span>
+            <h2>
+              Muchos caminos.
+              <br />
+              <span>Uno puede ser el tuyo.</span>
+            </h2>
+          </div>
+          <p>
+            Explorá nuestras cinco áreas de formación.
+            <br />
+            Abrí un área y conocé cada curso.
+          </p>
+        </div>
+        <div class="n-area-grid">
+          {categories.map((category, i) => (
+            <details class="n-area-card" name="formation-area" open={i === 0}>
+              <summary>
+                <Image
+                  src={areaImages[i]}
+                  alt=""
+                  width={200}
+                  height={150}
+                  format="webp"
+                  loading="lazy"
+                />
+                <span>
+                  <small>ÁREA DE FORMACIÓN</small>
+                  <strong>{category}</strong>
+                  <em>
+                    {courses.filter((course) => course.category === category).length} cursos para
+                    explorar
+                  </em>
+                </span>
+                <Icon name="plus" size={24} />
+              </summary>
+              <div class="n-area-courses">
+                {courses
+                  .filter((course) => course.category === category)
+                  .map((course) => (
+                    <a href={`/cursos/${course.slug}/`}>
+                      {course.name}
+                      <Icon name="diagonal" size={17} />
+                    </a>
+                  ))}
+                <a class="n-all-area" href={areaUrl(category)}>
+                  Ver toda el área <Icon name="arrow" size={18} />
+                </a>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+    <section class="n-institute">
+      <div class="container">
+        <div class="h-section-head">
+          <div>
+            <span class="h-eyebrow">TU CAPACITACIÓN, CERCA TUYO</span>
+            <h2>
+              Un instituto.
+              <br />
+              <span>Personas que te acompañan.</span>
+            </h2>
+          </div>
+          <a class="h-link" href="/instituto/">
+            Conocé el instituto <Icon name="arrow" size={18} />
+          </a>
+        </div>
+        <div class="n-proof-grid">
+          <a href="/sedes/">
+            <Icon name="pin" size={25} />
+            <span>
+              <strong>Una sede para encontrarnos</strong>
+              <small>
+                25 de Mayo 54, Santiago del Estero.
+                <br />
+                Conocé cómo llegar y visitanos.
+              </small>
+            </span>
+            <Icon name="diagonal" size={19} />
+          </a>
+          <a href={site.studentCampus} target="_blank" rel="noopener noreferrer">
+            <Icon name="laptop" size={25} />
+            <span>
+              <strong>Tu campus, siempre a mano</strong>
+              <small>
+                ¿Ya sos alumno? Accedé al portal
+                <br />
+                para gestionar tus clases y más.
+              </small>
+            </span>
+            <Icon name="diagonal" size={19} />
+          </a>
+          <a
+            href={whatsapp('Hola, quisiera hablar con el equipo sobre los cursos.')}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="chat" size={25} />
+            <span>
+              <strong>Alguien del otro lado</strong>
+              <small>
+                Consultá horarios, requisitos y aranceles
+                <br />
+                directamente con nuestro equipo.
+              </small>
+            </span>
+            <Icon name="diagonal" size={19} />
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="h-together">
+      <div class="container h-together-grid">
+        <div class="h-together-photo" data-reveal>
+          <Image
+            src={beauty}
+            alt="Personas compartiendo una práctica de peluquería. Imagen ilustrativa."
+            widths={[400, 700]}
+            sizes="(max-width:760px) 90vw, 40vw"
+            format="webp"
+          />
+          <span>
+            Aprender haciendo.
+            <br />
+            <strong>Crecer compartiendo.</strong>
+          </span>
+          <small>Imagen ilustrativa.</small>
+        </div>
+        <div class="h-together-copy" data-reveal>
+          <span class="h-eyebrow">EL PRIMER PASO ES TUYO. EL CAMINO, JUNTOS.</span>
+          <h2>
+            No tenés que tener
+            <br />
+            todo resuelto.
+            <br />
+            <span>Para eso estamos.</span>
+          </h2>
+          <p>
+            Elegir qué estudiar es una decisión personal. Queremos que la tomes con tranquilidad,
+            conociendo tus opciones y con alguien del otro lado para escucharte.
+          </p>
+          <div class="h-promise">
+            <Icon name="chat" size={23} />
+            <div>
+              <h3>Primero, te escuchamos.</h3>
+              <p>Contanos qué te gusta y qué querés aprender.</p>
+            </div>
+          </div>
+          <div class="h-promise">
+            <Icon name="book" size={23} />
+            <div>
+              <h3>Después, despejamos tus dudas.</h3>
+              <p>
+                Modalidades, horarios, aranceles y requisitos. Todo lo que necesitás saber antes de
+                elegir.
+              </p>
+            </div>
+          </div>
+          <a
+            class="h-link"
+            href={whatsapp('Hola, quisiera orientación para elegir mi próximo curso.')}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-lead="home-orientation"
+          >
+            Charlá con nuestro equipo <Icon name="arrow" size={18} />
+          </a>
+        </div>
+      </div>
+    </section>
+    <section class="h-modalities" id="modalidades">
+      <div class="container">
+        <div class="h-section-head" data-reveal>
+          <div>
+            <span class="h-eyebrow">TU VIDA. TUS TIEMPOS. TU MANERA.</span>
+            <h2>
+              Un lugar para aprender.
+              <br />
+              <span>Más de una forma de hacerlo.</span>
+            </h2>
+          </div>
+          <p>
+            Consultá las modalidades disponibles
+            <br />
+            para el curso que te interesa.
+          </p>
+        </div>
+        <div class="h-mode-grid" data-reveal>
+          {[
+            [
+              'people',
+              'Presencial',
+              'En el aula, con otros.',
+              'Compartí el aprendizaje con docentes y compañeros en nuestra sede de Santiago del Estero.',
+            ],
+            [
+              'laptop',
+              'Clases en vivo',
+              'Conectados para aprender.',
+              'Encuentros por Zoom, acceso a grabaciones y material de estudio para seguir aprendiendo.',
+            ],
+            [
+              'clock',
+              'A distancia',
+              'Con espacio para tu rutina.',
+              'Organizá tus tiempos con material en plataforma, actividades y evaluaciones por módulo.',
+            ],
+          ].map(([icon, title, subtitle, description], i) => (
+            <article>
+              <div class="h-mode-top">
+                <Icon name={icon} size={28} />
+                <span>0{i + 1}</span>
+              </div>
+              <h3>{title}</h3>
+              <strong>{subtitle}</strong>
+              <p>{description}</p>
+              <a
+                class="h-link"
+                href={whatsapp(`Hola, quisiera saber qué cursos ofrecen en modalidad: ${title}.`)}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Consultá las opciones <Icon name="arrow" size={17} />
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+    <Faq />
+    <section class="h-final">
+      <div class="container">
+        <div class="h-final-inner" data-reveal>
+          <div>
+            <span class="h-eyebrow">NOS VA A ENCANTAR CONOCERTE.</span>
+            <h2>
+              Lo que viene
+              <br />
+              <span>puede empezar hoy.</span>
+            </h2>
+            <p>Traé tus ganas. El primer paso lo pensamos juntos.</p>
+            <a
+              class="button h-primary"
+              href={whatsapp('¡Hola! Quiero dar el primer paso y conocer los cursos.')}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Hablemos de tu próximo paso <Icon name="chat" size={20} />
+            </a>
+            <span class="h-address">
+              <Icon name="pin" size={16} /> 25 de Mayo 54 · Santiago del Estero
+            </span>
+          </div>
+          <div class="h-final-mark" aria-hidden="true">
+            <svg viewBox="0 0 160 180" fill="none">
+              <path
+                d="m14 96 39-39 28 28 60-60M97 25h44v44"
+                stroke="currentColor"
+                stroke-width="17"
+              />
+              <path
+                d="m14 139 39-39 28 28 38-38M14 178l39-39 28 28 19-19"
+                stroke="#e81820"
+                stroke-width="17"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+    import '../scripts/home-motion';
+  </script>
+</BaseLayout>
